@@ -16,30 +16,42 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Introducing {gtreg}: an R package to produce regulatory tables for clinical research",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "",
-    "text": "🗓 November 2, 2022 | 9:00am - 12:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration"
+    "text": "🗓 October 28, 2024 | 9:00am - 12:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#learning-objectives",
     "href": "index.html#learning-objectives",
-    "title": "Introducing {gtreg}: an R package to produce regulatory tables for clinical research",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "Learning objectives",
-    "text": "Learning objectives\nBuild and customize tables often required for clinical reporting."
+    "text": "Learning objectives",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#is-this-course-for-me",
     "href": "index.html#is-this-course-for-me",
-    "title": "Introducing {gtreg}: an R package to produce regulatory tables for clinical research",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "Is this course for me?",
-    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you make adverse event tables or descriptive statistics tables in R? Or table shells for either?\nDo you want your workflow to be reproducible?\nAre you often frustrated with the immense amount of code required to create great-looking tables in R?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %>% operator is a plus, but not required."
+    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you make adverse event tables or descriptive statistics tables in R? Or table shells for either?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %&gt;% operator is a plus, but not required.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#prework",
     "href": "index.html#prework",
-    "title": "Introducing {gtreg}: an R package to produce regulatory tables for clinical research",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "Prework",
-    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nMost recent release of the gtreg and other packages used in workshop.\ninstll_pkgs <- c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it."
+    "text": "Prework\nTHIS WILL BE ON POSIT CLOUD Before attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nMost recent release of xxx and other packages used in workshop.\n# install isntructions\nEnsure you can knit R markdown documents\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "license.html",

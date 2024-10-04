@@ -1,32 +1,26 @@
 ---
-title: "Introducing {gtreg}: an R package to produce regulatory tables for clinical research"
-subtitle: "R in Pharma 2022 Workshop"
+title: "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity "
+subtitle: "R in Pharma 2024 Workshop"
 editor: source
 ---
 
 ------------------------------------------------------------------------
 
-🗓 November 2, 2022 \| 9:00am - 12:00pm EDT
+🗓 October 28, 2024 \| 9:00am - 12:00pm EDT
 
 🏨 Virtual
 
-💥 **FREE** [workshop registration](https://www.eventbrite.com/e/introducing-gtreg-tickets-429262073417) 
+💥 **FREE** [workshop registration](https://www.eventbrite.com/) 
 
 ------------------------------------------------------------------------
 
 # Overview
 
-In this workshop you will learn how to make standard regulatory tables and table
-shells for clinical research using the {gtreg} package in R. This includes: 
-adverse event tables, summary tables with multi-line statistics for continuous variables,
-and raw data listings tables with grouped data. Table elements like headers, 
-footers, or captions are customizable using {gtreg} column selectors, and the 
-{gt} package can be used to implement final styling tweaks on your table. Lastly, 
-{gtreg} tables are easily output to various formats, including HTML, PDF, RTF, Word, and Excel.
+In this session, I will delve into the (near) future of regulatory submissions, emphasizing three key advancements: full reproducibility, open-source technologies, and interactive data capabilities. I will explore how Continuous Integration and Continuous Deployment (CICD) practices and containerization are driving the evolution of regulatory submissions by ensuring that processes are fully reproducible and automated. Then I will describe how open-source technologies and R packages are transforming clinical reporting by providing robust, customizable solutions that enhance transparency and flexibility. Finally, I will showcase the power of interactive data capabilities using {teal} and Shiny, demonstrating how these tools facilitate dynamic data exploration and visualization. Through practical examples, I will showcase how integrating these innovations can streamline regulatory workflows, improve data management, and, hopefully, foster more informed decision-making in pharmaceutical research. Ideal for R developers, data scientists, and clinical researchers, this session will equip you with the knowledge to embrace these future-ready approaches in your own work.
+
 
 ## Learning objectives
 
-Build and customize tables often required for clinical reporting.
 
 ## Is this course for me?
 
@@ -34,9 +28,6 @@ If your answer to any of the following questions is "yes", then this is the righ
 
 -   Do you make adverse event tables or descriptive statistics tables in R? Or table shells for either?
 
--   Do you want your workflow to be reproducible?
-
--   Are you often frustrated with the immense amount of code required to create great-looking tables in R?
 
 The workshop is designed for those with some experience in R. 
 It will be assumed that participants can perform basic data manipulation.
@@ -44,17 +35,17 @@ Experience with the {tidyverse} and the `%>%` operator is a plus, but not requir
 
 ## Prework
 
+**THIS WILL BE ON POSIT CLOUD**
 Before attending the workshop please have the following installed and configured on your machine.
 
 -   Recent version of **R** 
 
 -   Recent version of **RStudio**
 
--   Most recent release of the [**gtreg**](https://shannonpileggi.github.io/gtreg/) and other packages used in workshop.
+-   Most recent release of xxx and other packages used in workshop.
 
     ```r
-    instll_pkgs <- c("gtreg", "gtsummary", "tidyverse", "labelled", "usethis")
-    install.packages(instll_pkgs)
+    # install isntructions
     ```
 -   Ensure you can knit R markdown documents
     - Open RStudio and create a new Rmarkdown document
@@ -63,13 +54,9 @@ Before attending the workshop please have the following installed and configured
  
 # Instructors
 
-![](images/Shannon_circle.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Shannon Pileggi" width="150"}
+![](images/Davide_Garolini-PH.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Davide Garolini" width="150"}
 
-[**Shannon Pileggi**](https://www.pipinghotdata.com/) (she/her) is a Lead Data Scientist at The Prostate Cancer Clinical Trials Consortium, a frequent blogger, and a member of the R-Ladies Global team. She enjoys automating data wrangling and data outputs, and making both data insights and learning new material digestible.
+[**Davide Garolini**](https://www.google.com/) (he/his) is a Statistical Engineer with an M.Phys. in Biophysics and a Ph.D. in Computational Neuroscience, has over ten years of R programming and package development expertise, specializing in clinical data analysis and regulatory deliveries. He significantly contributes to the NEST project by improving key tools like {rtables}, {tern}, and {gtsummary} for regulatory compliance. Davide strongly advocates for open-source collaboration, promoting advancements in clinical research.
 
 <br>
 <br>
-
-![](images/dan-modified.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Daniel D. Sjoberg" width="150"}
-
-[**Daniel D. Sjoberg**](https://www.danieldsjoberg.com/) (he/him) is a Senior Biostatistician at Memorial Sloan Kettering Cancer Center in New York City and a DrPH candidate in Biostatistics at Columbia University. His research interests include adaptive methods in clinical trials, precision medicine, and predictive modeling. He also enjoys R package development, creating many packages available on [CRAN](https://cran.r-project.org/web/packages/), [R-Universe](https://ddsjoberg.r-universe.dev/ui#packages), [GitHub](https://github.com/ddsjoberg), and internally at MSKCC. Daniel is the the winner of the 2021 American Statistical Association (ASA) Innovation in Statistical Programming and Analytics award.
