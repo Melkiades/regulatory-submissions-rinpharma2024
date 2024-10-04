@@ -1,0 +1,26 @@
+## Thank you!
+
+🙏 [Click here to submit workshop feedback](https://forms.gle/kvEirN7sJmavem8q6){target="_blank"}
+
+. . .
+
+`r fontawesome::fa("file-lines", fill = fa_fill)` {gtreg} website
+
+    <https://shannonpileggi.github.io/gtreg/>
+
+`r fontawesome::fa("screwdriver-wrench", fill = fa_fill)` {gtreg} installation
+
+```{r}
+#| eval: false
+#| echo: true
+# install from CRAN
+install.packages("gtreg") 
+# or install development version from github
+devtools::install_github("shannonpileggi/gtreg") 
+```
+
+`r fontawesome::fa("github", fill = fa_fill)` {gtreg} issues
+
+    <https://github.com/shannonpileggi/gtreg/issues>
+
+`r fontawesome::fa("lightbulb", fill = fa_fill)` {gtreg} feature requests or questions: ask on <https://github.com/shannonpileggi/gtreg/discussions>
