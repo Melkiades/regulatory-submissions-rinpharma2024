@@ -2,49 +2,39 @@ project:
   type: website
   output-dir: docs
   render:
-    - "*.qmd"
-    - "!exercises/exercises.Rmd"
-    - "!slides/[0-9]*.qmd"
+    - "index.qmd"
+    - "licence.qmd"
 
 website:
   page-navigation: true
-  title: "Regulatory tables for clinical research with {gtreg}"
+  title: "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity"
   description: "Homepage for the R in Pharma 2024 Workshop"
-  site-url: "https://shannonpileggi.github.io/gtreg-workshop-rinpharma-2022/"
-  favicon: "images/gtreg-logo.png"
+  site-url: "https://melkiades.github.io/regulatory-submissions-rinpharma2024/"
+  favicon: "images/NEST-logo.png"
 
-  repo-url: https://github.com/shannonpileggi/gtreg-workshop-rinpharma-2022/
+  repo-url: https://github.com/Melkiades/regulatory-submissions-rinpharma2024
   repo-actions: [edit, issue]
 
   open-graph: true
-  twitter-card:
-    creator: "@PipingHotData"
-    image: "/images/gtreg-logo.png"
-
   page-footer:
     left: "This page is built with ❤️ and [Quarto](https://quarto.org/). Inspired by [@minebocek](https://twitter.com/minebocek) and [@statistishdan](https://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed)."
-    right: "&copy; Copyright 2022, Shannon Pileggi"
+    right: "&copy; Copyright 2022, NEST team"
     background: "#708090"
 
   sidebar:
     background: "#708090"
-    logo: "images/gtreg-logo.png"
+    logo: "images/NEST.png"
     pinned: true
     align: center
     tools:
       - icon: github
-        href: https://github.com/shannonpileggi/gtreg-workshop-rinpharma-2022
+        href: https://github.com/Melkiades/regulatory-submissions-rinpharma2024
         text: GitHub
     style: docked
     contents:
      - href: index.qmd
        text: Home
-     - href: slidespage.qmd
-       text: Slides
-     - href: exercises.qmd
-       text: Exercises
-     - href: feedback.qmd
-     - href: license.qmd
+
 
 format:
   html:
