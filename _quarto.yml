@@ -3,7 +3,10 @@ project:
   output-dir: docs
   render:
     - "index.qmd"
-    - "licence.qmd"
+    - "license.qmd"
+    # - "*.qmd"
+    # - "!exercises/exercises.Rmd"
+    # - "!slides/[0-9]*.qmd"
 
 website:
   page-navigation: true
@@ -18,11 +21,11 @@ website:
   open-graph: true
   page-footer:
     left: "This page is built with ❤️ and [Quarto](https://quarto.org/). Inspired by [@minebocek](https://twitter.com/minebocek) and [@statistishdan](https://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed)."
-    right: "&copy; Copyright 2022, NEST team"
-    background: "#708090"
+    right: "&copy; Copyright 2024, NEST team"
+    background: "#0964b5"
 
   sidebar:
-    background: "#708090"
+    background: "#0964b5"
     logo: "images/NEST.png"
     pinned: true
     align: center
@@ -38,12 +41,10 @@ website:
 
 format:
   html:
-    theme: [cosmo, theme.scss]
+    theme: [yeti, style.scss]
     toc: true
     code-copy: true
     code-overflow: scroll
-    mainfont: "Atkinson Hyperlegible"
-    highlight-style: a11y
 
 editor: source
 
