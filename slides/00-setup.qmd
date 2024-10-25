@@ -3,22 +3,22 @@
 ```{r}
 #| echo: false
 #| cache: false
-library(gtsummary)
-library(tidyverse)
-library(countdown)
-library(gtreg)
-library(gt)
+# library(gtsummary)
+# library(tidyverse)
+# library(countdown)
+# library(gtreg)
+# library(gt)
+# 
+# knit_print.gtsummary <- function(x, ...) {
+#   gtsummary::as_gt(x) |> gt::as_raw_html()
+# }
+# 
+# knit_print.gt_tbl <- function(x, ...) {
+#   gt::as_raw_html(x)
+# }
 
-knit_print.gtsummary <- function(x, ...) {
-  gtsummary::as_gt(x) |> gt::as_raw_html()
-}
-
-knit_print.gt_tbl <- function(x, ...) {
-  gt::as_raw_html(x)
-}
-
-registerS3method("knit_print", "gtsummary", knit_print.gtsummary)
-registerS3method("knit_print", "gt_tbl", knit_print.gt_tbl)
+# registerS3method("knit_print", "gtsummary", knit_print.gtsummary)
+# registerS3method("knit_print", "gt_tbl", knit_print.gt_tbl)
 
 # fill for font awesome icons
 fa_fill <- "#606060"
@@ -28,74 +28,47 @@ fa_fill <- "#606060"
 
 <br>
 
-This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/) (CC BY-SA4.0).
-
+This material is based on the original work from the {gtreg} workshop by Shannon Pileggi and Daniel Sjoberg, available [here](https://shannonpileggi.github.io/gtreg-workshop-rinpharma-2022/), and adapted under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
 ## Instructors
 
-::: columns
+:::: {.columns}
 ::: {.column width="50%"}
-**Shannon Pileggi**
+**Davide Garolini**
 
-![](images/Shannon_circle.png){width="57%"}
+![](images/Davide_Garolini-PH.png){width="40%"}
 
-`r fontawesome::fa("link", fill = fa_fill)` [pipinghotdata.com](https://www.pipinghotdata.com/)
+<!-- `r fontawesome::fa("link", fill = fa_fill)` [a](https://www.a.com/) -->
 
-`r fontawesome::fa("twitter", fill = fa_fill)` [\@PipingHotData](https://twitter.com/PipingHotData)
+`r fontawesome::fa("mastodon", fill = fa_fill)` [\@melkiades](https://mastodon.social/@melkiades)
 
-`r fontawesome::fa("github", fill = fa_fill)` [github.com/shannonpileggi](https://github.com/shannonpileggi/)
+`r fontawesome::fa("github", fill = fa_fill)` [melkiades](https://github.com/melkiades/)
 
-`r fontawesome::fa("linkedin", fill = fa_fill)` [linkedin.com/in/shannon-m-pileggi/](https://www.linkedin.com/in/shannon-m-pileggi/)
+`r fontawesome::fa("linkedin", fill = fa_fill)` [davidegarolini](https://www.linkedin.com/in/davidegarolini/)
 :::
 
 ::: {.column width="50%"}
-**Daniel Sjoberg**
+**Leena Khatri**
 
-![](images/dan-modified.png)
+![](images/profile_picture.png){width="40%"}
 
-`r fontawesome::fa("link", fill = fa_fill)` [danieldsjoberg.com](https://www.danieldsjoberg.com/)
+`r fontawesome::fa("github", fill = fa_fill)` [khatril](https://github.com/khatril)
 
-`r fontawesome::fa("twitter", fill = fa_fill)` [\@statistishdan](https://twitter.com/statistishdan)
-
-`r fontawesome::fa("github", fill = fa_fill)` [github.com/ddsjoberg](https://github.com/ddsjoberg/)
-
-`r fontawesome::fa("linkedin", fill = fa_fill)` [linkedin.com/in/ddsjoberg/](https://www.linkedin.com/in/ddsjoberg/)
+`r fontawesome::fa("linkedin", fill = fa_fill)` [leena-khatri-a8a364108](http://linkedin.com/in/leena-khatri-a8a364108)
 :::
-:::
-
-
-## Checklist
-
-<br>
-
-`r fontawesome::fa("check", fill = fa_fill)` Install recent R release
-
-    Current version `r stringr::word(R.version.string, 3, 3)`
-
-`r fontawesome::fa("check", fill = fa_fill)` Install RStudio
-
-    I am on version 2022.07.1+554 
-
-`r fontawesome::fa("check", fill = fa_fill)` Install packages
-
-``` r
-install.packages(c("gtreg", "gtsummary", "tidyverse", "labelled", "usethis"))
-```
-
-`r fontawesome::fa("check", fill = fa_fill)` Ensure you can knit Rmarkdown files
+::::
 
 ## Schedule
 
-| Time          | Activity           |
-|:--------------|:-------------------|
-| 09:00 - 09:50 | Section 1          |
-| 09:50 - 10:00 | *Break*            |
-| 10:00 - 10:50 | Section 2          |
-| 10:50 - 11:00 | *Break*            |
-| 11:00 - 12:00 | Section 3          |
+| Time          | Activity                               |
+|:--------------|:---------------------------------------|
+| 09:00 - 09:20 | Why Change?                            |
+| 09:20 - 10:10 | Getting there (P1)                     |
+| 10:10 - 10:20 | *Break*                                |
+| 10:20 - 11:10 | Getting there (P2)                     |
+| 11:10 - 11:20 | What do we expect?                     |
+| 11:20 - 11:30 | Additional resources: Collaborate!     |
 
 <br>
 
-Please add any questions to the public Zoom chat. These may be answered in the 
-moment or addressed at the end depending on context.
-
+Please add any questions to the public Zoom chat. These may be answered in the moment or addressed at the end depending on context.

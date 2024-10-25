@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://melkiades.github.io/regulatory-submissions-rinpharma2024/slidespage.html</loc>
+    <lastmod>2024-10-04T15:59:56.182Z</lastmod>
+  </url>
+  <url>
+    <loc>https://melkiades.github.io/regulatory-submissions-rinpharma2024/license.html</loc>
+    <lastmod>2024-10-25T15:40:37.856Z</lastmod>
+  </url>
+  <url>
+    <loc>https://melkiades.github.io/regulatory-submissions-rinpharma2024/feedback.html</loc>
+    <lastmod>2024-10-04T15:59:56.092Z</lastmod>
+  </url>
+  <url>
+    <loc>https://melkiades.github.io/regulatory-submissions-rinpharma2024/exercises.html</loc>
+    <lastmod>2024-10-25T13:36:26.067Z</lastmod>
+  </url>
+  <url>
     <loc>https://melkiades.github.io/regulatory-submissions-rinpharma2024/index.html</loc>
-    <lastmod>2024-10-23T08:39:00.059Z</lastmod>
+    <lastmod>2024-10-25T15:47:55.142Z</lastmod>
+  </url>
+  <url>
+    <loc>https://melkiades.github.io/regulatory-submissions-rinpharma2024/slides/index.html</loc>
+    <lastmod>2024-10-25T16:29:00.378Z</lastmod>
   </url>
 </urlset>

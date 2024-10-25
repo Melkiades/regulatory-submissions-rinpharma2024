@@ -1,10 +1,50 @@
 [
   {
+    "objectID": "slidespage.html",
+    "href": "slidespage.html",
+    "title": "Slides",
+    "section": "",
+    "text": "View slides in full screen",
+    "crumbs": [
+      "Slides"
+    ]
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License",
+    "section": "",
+    "text": "This material is based on the original work from the {gtreg} workshop by Shannon Pileggi and Daniel Sjoberg, available here, and adapted under a Creative Commons Attribution 4.0 International License.",
+    "crumbs": [
+      "License"
+    ]
+  },
+  {
+    "objectID": "feedback.html",
+    "href": "feedback.html",
+    "title": "Feedback",
+    "section": "",
+    "text": "Thank you for attending the {gtreg} workshop! Please complete an anonymous survey to provide the workshop presenters feedback. We appreciate your time and thoughtful feedback. ❤️\nClick here to enter the feedback form.",
+    "crumbs": [
+      "Feedback"
+    ]
+  },
+  {
+    "objectID": "exercises.html",
+    "href": "exercises.html",
+    "title": "Introducing {gtreg}: Exercises",
+    "section": "",
+    "text": "Instructions:",
+    "crumbs": [
+      "Exercises"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "",
-    "text": "🗓 October 28, 2024 | 9:00am - 12:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration",
+    "text": "🗓 October 28, 2024 | 9:00am - 12:30pm EDT\n🏨 Virtual\n💥 FREE workshop registration",
     "crumbs": [
       "Home"
     ]
@@ -14,7 +54,7 @@
     "href": "index.html#learning-objectives",
     "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "Learning objectives",
-    "text": "Learning objectives",
+    "text": "Learning objectives\nAfter a vision-filled motivational introduction, and through a succession of practical examples, this session will empower R developers, data scientists, and clinical researchers to adopt innovative, future-ready approaches.",
     "crumbs": [
       "Home"
     ]
@@ -24,7 +64,7 @@
     "href": "index.html#is-this-course-for-me",
     "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "Is this course for me?",
-    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you make adverse event tables or descriptive statistics tables in R? Or table shells for either?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %&gt;% operator is a plus, but not required.",
+    "text": "Is this course for me?\nEver wondered how clinical trials reporting may look in the future? Are you interested in learning about some of the latest tools and technologies transforming regulatory submissions? Do you want to explore the potential of R in clinical research? If you answered yes to any of these questions, this workshop is for you!\nThe workshop is not designed only for those who are masters in R. We will bring you along an intuitive path to produce reproducible (and interactive) reports.",
     "crumbs": [
       "Home"
     ]
@@ -34,9 +74,23 @@
     "href": "index.html#prework",
     "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "Prework",
-    "text": "Prework\nTHIS WILL BE ON POSIT CLOUD Before attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nMost recent release of xxx and other packages used in workshop.\n# install isntructions\nEnsure you can knit R markdown documents\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it.",
+    "text": "Prework\nBefore attending the workshop please check our posit cloud and create your own assignment. All packages needed are already installed there (it is a clone of the exercise folder).",
     "crumbs": [
       "Home"
     ]
+  },
+  {
+    "objectID": "slides/index.html#main-task-reporting-clinical-trials",
+    "href": "slides/index.html#main-task-reporting-clinical-trials",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Main task: reporting clinical trials",
+    "text": "Main task: reporting clinical trials\n\n\nPurpose of regulatory submissions is to show efficacy and safety of new drugs.\n\nDeliver analysis reports, datasets, and software\nHealth Authorities (HA) need to be able to reproduce key results"
+  },
+  {
+    "objectID": "slides/index.html#why-migrate-to-r-in-clinical-trials",
+    "href": "slides/index.html#why-migrate-to-r-in-clinical-trials",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Why migrate to R in Clinical Trials?",
+    "text": "Why migrate to R in Clinical Trials?\nBenefits for all\n\n\nCost Efficiency: R is free, reducing software costs.\nFlexibility: R offers greater customization and a vast package ecosystem.\nCommunity Support and Collaboration: R has a large, active community driving rapid innovation.\n\n\n\n\n\n\n\n\n\n\n\nRegulatory Submissions with NEST"
   }
 ]

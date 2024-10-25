@@ -1,0 +1,23 @@
+# Why change? From proprietary software to R
+
+## Main task: _reporting clinical trials_
+
+<br>
+
+<br>
+
+Purpose of regulatory submissions is to show efficacy and safety of new drugs.
+
+- Deliver analysis reports, datasets, and software
+- Health Authorities (HA) need to be able to reproduce key results
+
+## Why migrate to R in Clinical Trials?
+_Benefits for all_
+
+<br>
+
+* **Cost Efficiency:** R is free, reducing software costs.
+* **Flexibility:** R offers greater customization and a vast package ecosystem.
+* **Community Support and Collaboration:** R has a large, active community driving rapid innovation.
+
+

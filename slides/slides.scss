@@ -1,18 +1,17 @@
 /*-- scss:defaults --*/
 
 // fonts
-@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Nunito+Sans';
 
-$font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;
-$presentation-heading-color: #7090A5;
+$font-family-sans-serif: "Nunito Sans", sans-serif;
+$presentation-heading-color: #00246B;
 $presentation-title-slide-text-align: "left";
-$presentation-font-size-root: 33px;
+$presentation-font-size-root: 27px;
 $code-block-font-size: 0.6em;
-$link-color: #7090A5;
+$link-color: #408EC6;
 $custom-col: #E67E3A;
 
 /*-- scss:rules --*/
-
 .emphasis {
   font-weight: bold;
   color: $custom-col;

@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -63,7 +29,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./images/NEST-logo.png" rel="icon" type="image/png">
+<link href="./slidespage.html" rel="next">
+<link href="./images/NEST.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -105,6 +72,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta property="og:title" content="The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity - The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity">
 <meta property="og:description" content="R in Pharma 2024 Workshop">
 <meta property="og:site_name" content="The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity">
+<meta name="twitter:title" content="The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity - The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity">
+<meta name="twitter:description" content="R in Pharma 2024 Workshop">
+<meta name="twitter:image" content="https://melkiades.github.io/regulatory-submissions-rinpharma2024//images/NEST.png">
+<meta name="twitter:creator" content="@NEST">
+<meta name="twitter:image-height" content="1501">
+<meta name="twitter:image-width" content="1301">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar docked">
@@ -150,6 +124,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Home</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slidespage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Slides</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercises</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./feedback.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Feedback</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./license.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">License</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -168,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#instructors" id="toc-instructors" class="nav-link" data-scroll-target="#instructors">Instructors</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/Melkiades/regulatory-submissions-rinpharma2024/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Melkiades/regulatory-submissions-rinpharma2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -194,48 +192,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <hr>
-<p>🗓 October 28, 2024 | 9:00am - 12:00pm EDT</p>
+<p>🗓 October 28, 2024 | 9:00am - 12:30pm EDT</p>
 <p>🏨 Virtual</p>
 <p>💥 <strong>FREE</strong> <a href="https://events.zoom.us/ev/AvobJEOTVwkUnH6_TgLZDZJauk4dxfm5jCG8JFNN9zukOcsVLvTN~AmO5XY5HRBcxkKG6Hga1aXZaYtpBSER6jHms1seP-NNOA0dhcQZUGJ2NWg">workshop registration</a></p>
 <hr>
 <section id="overview" class="level1">
 <h1>Overview</h1>
-<p>In this session, I will delve into the (near) future of regulatory submissions, emphasizing three key advancements: full reproducibility, open-source technologies, and interactive data capabilities. I will explore how Continuous Integration and Continuous Deployment (CICD) practices and containerization are driving the evolution of regulatory submissions by ensuring that processes are fully reproducible and automated. Then I will describe how open-source technologies and R packages are transforming clinical reporting by providing robust, customizable solutions that enhance transparency and flexibility. Finally, I will showcase the power of interactive data capabilities using {teal} and Shiny, demonstrating how these tools facilitate dynamic data exploration and visualization. Through practical examples, I will showcase how integrating these innovations can streamline regulatory workflows, improve data management, and, hopefully, foster more informed decision-making in pharmaceutical research. Ideal for R developers, data scientists, and clinical researchers, this session will equip you with the knowledge to embrace these future-ready approaches in your own work.</p>
+<p>In this workshop, we will explore the future of regulatory submissions, focusing on three pivotal advancements: full reproducibility, open-source technologies, and interactive data capabilities. We’ll examine how Continuous Integration and Continuous Deployment (CICD) and containerization are transforming submissions by enabling reproducible, automated processes. We’ll then look at how open-source tools and R packages are reshaping clinical reporting, offering flexible, transparent solutions. Finally, we’ll dive into interactive data tools like {teal} and Shiny, showcasing their role in dynamic data exploration and visualization.</p>
 <section id="learning-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<p>After a vision-filled motivational introduction, and through a succession of practical examples, this session will empower R developers, data scientists, and clinical researchers to adopt innovative, future-ready approaches.</p>
 </section>
 <section id="is-this-course-for-me" class="level2">
 <h2 class="anchored" data-anchor-id="is-this-course-for-me">Is this course for me?</h2>
-<p>If your answer to any of the following questions is “yes”, then this is the right workshop for you.</p>
-<ul>
-<li>Do you make adverse event tables or descriptive statistics tables in R? Or table shells for either?</li>
-</ul>
-<p>The workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the <code>%&gt;%</code> operator is a plus, but not required.</p>
+<p>Ever wondered how clinical trials reporting may look in the future? Are you interested in learning about some of the latest tools and technologies transforming regulatory submissions? Do you want to explore the potential of R in clinical research? If you answered yes to any of these questions, this workshop is for you!</p>
+<p>The workshop is not designed only for those who are masters in R. We will bring you along an intuitive path to produce reproducible (and interactive) reports.</p>
 </section>
 <section id="prework" class="level2">
 <h2 class="anchored" data-anchor-id="prework">Prework</h2>
-<p><strong>THIS WILL BE ON POSIT CLOUD</strong> Before attending the workshop please have the following installed and configured on your machine.</p>
-<ul>
-<li><p>Recent version of <strong>R</strong></p></li>
-<li><p>Recent version of <strong>RStudio</strong></p></li>
-<li><p>Most recent release of xxx and other packages used in workshop.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install isntructions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Ensure you can knit R markdown documents</p>
-<ul>
-<li>Open RStudio and create a new Rmarkdown document</li>
-<li>Save the document and check you are able to knit it.</li>
-</ul></li>
-</ul>
+<p>Before attending the workshop please check our <a href="https://posit.cloud/spaces/562648/content/">posit cloud</a> and create your own assignment. All packages needed are already installed there (it is a clone of the exercise folder).</p>
 </section>
 </section>
 <section id="instructors" class="level1">
 <h1>Instructors</h1>
 <p><img src="images/Davide_Garolini-PH.png" class="img-fluid" style="float:left;padding: 0 10px 0 0;" alt="Headshot of Davide Garolini" width="150"></p>
-<p><a href="https://www.google.com/"><strong>Davide Garolini</strong></a> (he/his) is a Statistical Engineer with an M.Phys. in Biophysics and a Ph.D.&nbsp;in Computational Neuroscience, has over ten years of R programming and package development expertise, specializing in clinical data analysis and regulatory deliveries. He significantly contributes to the NEST project by improving key tools like {rtables}, {tern}, and {gtsummary} for regulatory compliance. Davide strongly advocates for open-source collaboration, promoting advancements in clinical research.</p>
+<p><a href="https://www.linkedin.com/in/davidegarolini/"><strong>Davide Garolini</strong></a> (he/his) is a Statistical Engineer with an M.Phys. in Biophysics and a Ph.D.&nbsp;in Computational Neuroscience, has over ten years of R programming and package development expertise, specializing in clinical data analysis and regulatory deliveries. He significantly contributes to the NEST project by improving key tools like {rtables}, {tern}, and {gtsummary} for regulatory compliance. Davide strongly advocates for open-source collaboration, promoting advancements in clinical research.</p>
 <p><br></p>
 <p><br></p>
 <p><img src="images/profile_picture.png" class="img-fluid" style="float:left;padding: 0 10px 0 0;" alt="Headshot of Leena Khatri" width="150"></p>
-<p>[<strong>Leena Khatri</strong>] (she/her) is a Senior Data Scientist in Product Development Data Sciences at Roche. She is currently the Product Owner of the NEST data sciences expert team and associated packages such as {rtables}, {tern}. In addition she leads statistical programming teams, supporting late phase programs in Immunology. Leena is a strong advocate for the end to end usage of R in clinical reporting.</p>
+<p><a href="https://uk.linkedin.com/in/leena-khatri-a8a364108"><strong>Leena Khatri</strong></a> (she/her) is a Senior Data Scientist in Product Development Data Sciences at Roche. She is currently the Product Owner of the NEST data sciences expert team and associated packages such as {rtables}, {tern}. In addition she leads statistical programming teams, supporting late phase programs in Immunology. Leena is a strong advocate for the end to end usage of R in clinical reporting.</p>
 
 
 </section>
@@ -650,15 +635,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./slidespage.html" class="pagination-link" aria-label="Slides">
+        <span class="nav-page-text">Slides</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>. Inspired by <a href="https://twitter.com/minebocek"><span class="citation" data-cites="minebocek">@minebocek</span></a> and <a href="https://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed"><span class="citation" data-cites="statistishdan">@statistishdan</span></a>.</p>
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>. Inspired by <a href="https://shannonpileggi.github.io/gtreg-workshop-rinpharma-2022/"><span class="citation" data-cites="pipinghotdata">@pipinghotdata</span></a> and <a href="https://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed"><span class="citation" data-cites="statistishdan">@statistishdan</span></a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Melkiades/regulatory-submissions-rinpharma2024/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Melkiades/regulatory-submissions-rinpharma2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    </div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, NEST team</p>
 </div>

@@ -6,7 +6,7 @@ editor: source
 
 ------------------------------------------------------------------------
 
-🗓 October 28, 2024 \| 9:00am - 12:00pm EDT
+🗓 October 28, 2024 \| 9:00am - 12:30pm EDT
 
 🏨 Virtual
 
@@ -16,42 +16,27 @@ editor: source
 
 # Overview
 
-In this session, I will delve into the (near) future of regulatory submissions, emphasizing three key advancements: full reproducibility, open-source technologies, and interactive data capabilities. I will explore how Continuous Integration and Continuous Deployment (CICD) practices and containerization are driving the evolution of regulatory submissions by ensuring that processes are fully reproducible and automated. Then I will describe how open-source technologies and R packages are transforming clinical reporting by providing robust, customizable solutions that enhance transparency and flexibility. Finally, I will showcase the power of interactive data capabilities using {teal} and Shiny, demonstrating how these tools facilitate dynamic data exploration and visualization. Through practical examples, I will showcase how integrating these innovations can streamline regulatory workflows, improve data management, and, hopefully, foster more informed decision-making in pharmaceutical research. Ideal for R developers, data scientists, and clinical researchers, this session will equip you with the knowledge to embrace these future-ready approaches in your own work.
+In this workshop, we will explore the future of regulatory submissions, focusing on three pivotal advancements: full reproducibility, open-source technologies, and interactive data capabilities. We’ll examine how Continuous Integration and Continuous Deployment (CICD) and containerization are transforming submissions by enabling reproducible, automated processes. We’ll then look at how open-source tools and R packages are reshaping clinical reporting, offering flexible, transparent solutions. Finally, we’ll dive into interactive data tools like {teal} and Shiny, showcasing their role in dynamic data exploration and visualization. 
 
 ## Learning objectives
 
+After a vision-filled motivational introduction, and through a succession of practical examples, this session will empower R developers, data scientists, and clinical researchers to adopt innovative, future-ready approaches.
+
 ## Is this course for me?
 
-If your answer to any of the following questions is "yes", then this is the right workshop for you.
+Ever wondered how clinical trials reporting may look in the future? Are you interested in learning about some of the latest tools and technologies transforming regulatory submissions? Do you want to explore the potential of R in clinical research? If you answered yes to any of these questions, this workshop is for you!
 
--   Do you make adverse event tables or descriptive statistics tables in R? Or table shells for either?
-
-The workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the `%>%` operator is a plus, but not required.
+The workshop is not designed only for those who are masters in R. We will bring you along an intuitive path to produce reproducible (and interactive) reports.
 
 ## Prework
 
-**THIS WILL BE ON POSIT CLOUD** Before attending the workshop please have the following installed and configured on your machine.
-
--   Recent version of **R**
-
--   Recent version of **RStudio**
-
--   Most recent release of xxx and other packages used in workshop.
-
-    ``` r
-    # install isntructions
-    ```
-
--   Ensure you can knit R markdown documents
-
-    -   Open RStudio and create a new Rmarkdown document
-    -   Save the document and check you are able to knit it.
+Before attending the workshop please check our [posit cloud](https://posit.cloud/spaces/562648/content/) and create your own assignment. All packages needed are already installed there (it is a clone of the exercise folder).
 
 # Instructors
 
 ![](images/Davide_Garolini-PH.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Davide Garolini" width="150"}
 
-[**Davide Garolini**](https://www.google.com/) (he/his) is a Statistical Engineer with an M.Phys. in Biophysics and a Ph.D. in Computational Neuroscience, has over ten years of R programming and package development expertise, specializing in clinical data analysis and regulatory deliveries. He significantly contributes to the NEST project by improving key tools like {rtables}, {tern}, and {gtsummary} for regulatory compliance. Davide strongly advocates for open-source collaboration, promoting advancements in clinical research.
+[**Davide Garolini**](https://www.linkedin.com/in/davidegarolini/) (he/his) is a Statistical Engineer with an M.Phys. in Biophysics and a Ph.D. in Computational Neuroscience, has over ten years of R programming and package development expertise, specializing in clinical data analysis and regulatory deliveries. He significantly contributes to the NEST project by improving key tools like {rtables}, {tern}, and {gtsummary} for regulatory compliance. Davide strongly advocates for open-source collaboration, promoting advancements in clinical research.
 
 <br>
 
@@ -59,4 +44,4 @@ The workshop is designed for those with some experience in R. It will be assumed
 
 ![](images/profile_picture.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Leena Khatri" width="150"}
 
-\[**Leena Khatri**\] (she/her) is a Senior Data Scientist in Product Development Data Sciences at Roche. She is currently the Product Owner of the NEST data sciences expert team and associated packages such as {rtables}, {tern}. In addition she leads statistical programming teams, supporting late phase programs in Immunology. Leena is a strong advocate for the end to end usage of R in clinical reporting.
+[**Leena Khatri**](https://uk.linkedin.com/in/leena-khatri-a8a364108) (she/her) is a Senior Data Scientist in Product Development Data Sciences at Roche. She is currently the Product Owner of the NEST data sciences expert team and associated packages such as {rtables}, {tern}. In addition she leads statistical programming teams, supporting late phase programs in Immunology. Leena is a strong advocate for the end to end usage of R in clinical reporting.
