@@ -1,0 +1,233 @@
+[
+  {
+    "objectID": "exercises.html",
+    "href": "exercises.html",
+    "title": "Getting there: Exercises",
+    "section": "",
+    "text": "Exercise 1\nCreate a demographic table by using only dplyr.\n\nThe data should have only age, gender, and treatment columns.\nThe table should include the mean and standard deviation of age, the count and percentage.\n\n\n\nShow the code solution\n# Load necessary libraries\nlibrary(dplyr)\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\nShow the code solution\n# Sample data frame with demographic data\nset.seed(123)\ndata <- data.frame(\n  id = 1:100,\n  age = sample(18:80, 100, replace = TRUE),\n  gender = sample(c(\"Male\", \"Female\"), 100, replace = TRUE),\n  treatment = sample(c(\"Treatment A\", \"Treatment B\"), 100, replace = TRUE)\n)\n\n# Count participants per treatment group to get labels with counts\ntreatment_counts <- data |> \n  count(treatment) |> \n  mutate(treatment_label = paste0(treatment, \" (N=\", n, \")\"))\n\n# Create the demographic summary table\ndemographic_table <- data |> \n  # Join with treatment counts to include the labeled treatment names\n  left_join(treatment_counts, by = \"treatment\") |>\n  # Summarize age, female, and male counts and percentages by the labeled treatment\n  group_by(treatment_label) |> \n  summarise(\n    `Mean Age (SD)` = paste0(round(mean(age), 1), \" (\", round(sd(age), 1), \")\"),\n    `N Female (%)` = paste0(sum(gender == \"Female\"), \" (\", round(sum(gender == \"Female\") / n() * 100, 1), \"%)\"),\n    `N Male (%)` = paste0(sum(gender == \"Male\"), \" (\", round(sum(gender == \"Male\") / n() * 100, 1), \"%)\"),\n    .groups = \"drop\"\n  ) |>\n  # Transpose for easy review if needed\n  t() |>\n  print()\n\n\n                [,1]                 [,2]                \ntreatment_label \"Treatment A (N=51)\" \"Treatment B (N=49)\"\nMean Age (SD)   \"50.3 (17.9)\"        \"45.7 (16.3)\"       \nN Female (%)    \"27 (52.9%)\"         \"28 (57.1%)\"        \nN Male (%)      \"24 (47.1%)\"         \"21 (42.9%)\"        \n\n\n\n\nExercise 2\nBuild a demografic table using {rtables} or {gtsummary}. Data is provided as follows:\n\n\nShow the code solution\n# Load Libraries & Data\nlibrary(dplyr)\n\nadsl <- random.cdisc.data::cadsl\nadvs <- random.cdisc.data::cadvs\n\n# Pre-Processing - Add any variables needed in your table to df\nadsl <- adsl |> \n  mutate(AGEGR1 = as.factor(case_when(\n    AGE >= 17 & AGE < 65 ~ \"≥17 to &lt;65\",\n    AGE >= 65 ~ \"≥65\",\n    AGE >= 65 & AGE < 75 ~ \"≥65 to &lt;75\",\n    AGE >= 75 ~ \"≥75\"\n  )))\n\nadvs <- advs |> \n  filter(AVISIT == \"BASELINE\", VSTESTCD == \"TEMP\") %>%\n  select(\"USUBJID\", \"AVAL\")\n\nanl <- left_join(adsl, advs, by = \"USUBJID\")\n\n\n\n\nShow the code solution\n  df <- df %>%\n    filter(.data[[saffl_var]] == \"Y\") %>%\n    df_explicit_na()\n\n  alt_counts_df <- alt_counts_df_preproc(alt_counts_df, id_var, arm_var, saffl_var)\n\n  lyt <- basic_table_annot(show_colcounts, annotations) %>%\n    split_cols_by_arm(arm_var, lbl_overall) %>%\n    analyze_vars(\n      vars = vars,\n      var_labels = lbl_vars,\n      show_labels = \"visible\",\n      .stats = c(\"mean_sd\", \"median_range\", \"count_fraction\"),\n      .formats = NULL,\n      na.rm = na_rm\n    ) %>%\n    append_topleft(\"Characteristic\")\n\n  tbl <- build_table(lyt, df = df, alt_counts_df = alt_counts_df)\n  if (prune_0) tbl <- prune_table(tbl)\n\n  tbl\n\n\n\n\nShow the code solution\ndf <- df %>% df_explicit_na()\n\ntbl <- df %>%\n  tbl_summary(\n    by = arm_var,\n    type = all_continuous() ~ \"continuous2\",\n    statistic = list(\n      all_continuous() ~ c(\n        \"{mean} ({sd})\",\n        \"{median} ({min} - {max})\"\n      ),\n      all_categorical() ~ \"{n} ({p}%)\"\n    ),\n    digits = all_continuous() ~ 1,\n    missing = ifelse(na_rm, \"no\", \"ifany\"),\n    label = as.list(lbl_vars) %>% setNames(vars)\n  ) %>%\n  gtsummary::bold_labels() %>%\n  modify_header(all_stat_cols() ~ \"**{level}**  \\nN = {n}\") %>%\n  add_overall(last = TRUE, col_label = paste0(\"**\", lbl_overall, \"**  \\nN = {n}\")) %>%\n  gtsummary::add_stat_label(label = all_continuous2() ~ c(\"Mean (SD)\", \"Median (min - max)\")) %>%\n  modify_footnote(update = everything() ~ NA) %>%\n  gtsummary::modify_column_alignment(columns = all_stat_cols(), align = \"right\")\n\n\n\n\nExercise 3\nTLG-catalog\nADAE\n\n\nExercise 4\nteal and ADAE\ndemographic teal.gallery"
+  },
+  {
+    "objectID": "feedback.html",
+    "href": "feedback.html",
+    "title": "Feedback",
+    "section": "",
+    "text": "Click here to enter the feedback form."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "",
+    "text": "🗓 October 28, 2024 | 9:00am - 12:30pm EDT\n🏨 Virtual\n💥 FREE workshop registration"
+  },
+  {
+    "objectID": "index.html#learning-objectives",
+    "href": "index.html#learning-objectives",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Learning objectives",
+    "text": "Learning objectives\nAfter a vision-filled motivational introduction, and through a succession of practical examples, this session will empower R developers, data scientists, and clinical researchers to adopt innovative, future-ready approaches."
+  },
+  {
+    "objectID": "index.html#is-this-course-for-me",
+    "href": "index.html#is-this-course-for-me",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Is this course for me?",
+    "text": "Is this course for me?\nEver wondered how clinical trials reporting may look in the future? Are you interested in learning about some of the latest tools and technologies transforming regulatory submissions? Do you want to explore the potential of R in clinical research? If you answered yes to any of these questions, this workshop is for you!\nThe workshop is not designed only for those who are masters in R. We will bring you along an intuitive path to produce reproducible (and interactive) reports."
+  },
+  {
+    "objectID": "index.html#prework",
+    "href": "index.html#prework",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Prework",
+    "text": "Prework\nBefore attending the workshop please check our posit cloud work space and create your own assignment. All packages needed are already installed there (it is a clone of the exercise folder)."
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License",
+    "section": "",
+    "text": "This material is based on the original work from the {gtreg} workshop by Shannon Pileggi and Daniel Sjoberg, available here, and adapted under a Creative Commons Attribution 4.0 International License."
+  },
+  {
+    "objectID": "slides/index.html#licensing",
+    "href": "slides/index.html#licensing",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Licensing",
+    "text": "Licensing\n\nThis material is based on the original work from the {gtreg} workshop by Shannon Pileggi and Daniel Sjoberg, available here, and adapted under a Creative Commons Attribution 4.0 International License."
+  },
+  {
+    "objectID": "slides/index.html#instructors",
+    "href": "slides/index.html#instructors",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Instructors",
+    "text": "Instructors\n\n\nDavide Garolini\n\n\n @melkiades\n melkiades\n davidegarolini\n\nLeena Khatri\n\n khatril\n leena-khatri-a8a364108"
+  },
+  {
+    "objectID": "slides/index.html#schedule",
+    "href": "slides/index.html#schedule",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Schedule",
+    "text": "Schedule\n\n\n\nTime\nActivity\n\n\n\n\n09:00 - 09:20\nWhy Change?\n\n\n09:20 - 10:10\nGetting there (P1)\n\n\n10:10 - 10:20\nBreak\n\n\n10:20 - 11:10\nGetting there (P2)\n\n\n11:10 - 11:20\nWhat do we expect?\n\n\n11:20 - 11:30\nAdditional resources: Collaborate!\n\n\n\n\nPlease add any questions to the public Zoom chat. These may be answered in the moment or addressed at the end depending on context."
+  },
+  {
+    "objectID": "slides/index.html#main-task-reporting-clinical-trials",
+    "href": "slides/index.html#main-task-reporting-clinical-trials",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Main task: reporting clinical trials",
+    "text": "Main task: reporting clinical trials\n  \nPurpose of regulatory submissions is to show efficacy and safety of new drugs.\n\n\n\nDeliver analysis reports, datasets, and software\nHealth Authorities (HA) need to be able to reproduce key results"
+  },
+  {
+    "objectID": "slides/index.html#why-migrate-to-r-in-clinical-trials",
+    "href": "slides/index.html#why-migrate-to-r-in-clinical-trials",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Why migrate to R in Clinical Trials?",
+    "text": "Why migrate to R in Clinical Trials?\nBenefits for all\n \n\n\nCost Efficiency: R is free, reducing software costs.\nFlexibility: R offers greater customization and a vast package ecosystem.\nCommunity Support and Collaboration: R has a large, active community driving rapid innovation."
+  },
+  {
+    "objectID": "slides/index.html#section",
+    "href": "slides/index.html#section",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "",
+    "text": "From R/Adoption Series: R and Shiny in Regulatory Submissions"
+  },
+  {
+    "objectID": "slides/index.html#section-1",
+    "href": "slides/index.html#section-1",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "",
+    "text": "From R/Adoption Series: R and Shiny in Regulatory Submissions"
+  },
+  {
+    "objectID": "slides/index.html#section-2",
+    "href": "slides/index.html#section-2",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "",
+    "text": "From https://pharmaverse.org/"
+  },
+  {
+    "objectID": "slides/index.html#why-migrating-to-r-in-clinical-trials",
+    "href": "slides/index.html#why-migrating-to-r-in-clinical-trials",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Why migrating to R in Clinical Trials?",
+    "text": "Why migrating to R in Clinical Trials?\nWhat’s in it for us\n\n\n\nTalent Pool: Growing number of professionals trained in R.\nTransparency: R’s open-source nature ensures full transparency and reproducibility.\nIntegration: R easily integrates with modern data tools and platforms.\nR is a transversal skill: other business units may benefit from R programmers.\nScalability in complexity: very novel methods can be readily applied to clinical trials growing in complexity."
+  },
+  {
+    "objectID": "slides/index.html#roche---pioneering-modernised-solutions-in-r",
+    "href": "slides/index.html#roche---pioneering-modernised-solutions-in-r",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Roche - Pioneering modernised solutions in R",
+    "text": "Roche - Pioneering modernised solutions in R\n \n\n2017   → PoCs\n{rtables}, {teal} for interactive work were launched and presented at RinPharma\n\n\n\n2021   → Open-source\n{rtables} made the first CRAN release, followed by open source of the codebase to kick off collaborations with other companies"
+  },
+  {
+    "objectID": "slides/index.html#roche---pioneering-modernised-solutions-in-r-1",
+    "href": "slides/index.html#roche---pioneering-modernised-solutions-in-r-1",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Roche - Pioneering modernised solutions in R",
+    "text": "Roche - Pioneering modernised solutions in R\n \n\n2023   → Adoption of tools and systems\nValidated environment to deliver our vision of R in submissions\n\n\n\n2024   → E2E submission in R"
+  },
+  {
+    "objectID": "slides/index.html#roches-end-to-end-r-journey-to-submission",
+    "href": "slides/index.html#roches-end-to-end-r-journey-to-submission",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Roche’s End-to-End R Journey to Submission",
+    "text": "Roche’s End-to-End R Journey to Submission"
+  },
+  {
+    "objectID": "slides/index.html#section-4",
+    "href": "slides/index.html#section-4",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "",
+    "text": "From R/Adoption Series: R and Shiny in Regulatory Submissions"
+  },
+  {
+    "objectID": "slides/index.html#section-5",
+    "href": "slides/index.html#section-5",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "",
+    "text": "From R/Adoption Series: R and Shiny in Regulatory Submissions"
+  },
+  {
+    "objectID": "slides/index.html#section-6",
+    "href": "slides/index.html#section-6",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "",
+    "text": "From R/Adoption Series: R and Shiny in Regulatory Submissions"
+  },
+  {
+    "objectID": "slides/index.html#section-7",
+    "href": "slides/index.html#section-7",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "",
+    "text": "Check https://github.com/RConsortium/submissions-pilot2/"
+  },
+  {
+    "objectID": "slides/index.html#findings-and-issues-from-fda",
+    "href": "slides/index.html#findings-and-issues-from-fda",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Findings and issues from FDA",
+    "text": "Findings and issues from FDA\n \n\nDifferent versions (R and open-source changes fast!)\nDifferent OS (Linux and Windows)\nInteractive features and p-hacking\n\n\n\n1.-2. Docker or WebAssembly (Pilot 4) 3. Even if p-hacking is NOT technology dependent, the ease-of-use and tweaking binds interactive features to the exploratory world\n\n\nFrom Hye Soo Cho, FDA, in R/Adoption Series: R and Shiny in Regulatory Submissions"
+  },
+  {
+    "objectID": "slides/index.html#section-8",
+    "href": "slides/index.html#section-8",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "",
+    "text": "From R/Adoption Series: R and Shiny in Regulatory Submissions"
+  },
+  {
+    "objectID": "slides/index.html#what-is-nest",
+    "href": "slides/index.html#what-is-nest",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "What is NEST",
+    "text": "What is NEST\nAccelerating Clinical Reporting\n\n\n\n\nA collection of open-sourced R packages, which enables fast and efficient insights generation under clinical research settings, for both exploratory and regulatory purposes."
+  },
+  {
+    "objectID": "slides/index.html#landscape-of-nest-products",
+    "href": "slides/index.html#landscape-of-nest-products",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Landscape of NEST Products",
+    "text": "Landscape of NEST Products\nWorking towards a complete solution for R-based insights delivery"
+  },
+  {
+    "objectID": "slides/index.html#preparation",
+    "href": "slides/index.html#preparation",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Preparation",
+    "text": "Preparation\n\nRecommended: Enter the dedicated RStudio Cloud work space (with packages pre-installed) to complete Exercise 1. It may still be helpful to peek at the exercises web page to verify that your results match the desired output.\n\n→ R in Pharma RStudio Cloud work space ←\n\nOtherwise: Use your personal computer and follow along the exercises on the website. Challenge yourself not to peek at the code solutions until you have completed the exercise."
+  },
+  {
+    "objectID": "slides/index.html#exercise-1",
+    "href": "slides/index.html#exercise-1",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n \nCreate a demographic table by using only {dplyr}.\n\n\nThe data should have only age, gender, and treatment columns.\nThe table should include the mean and standard deviation of age, the count and percentage.\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/index.html#additional-resources",
+    "href": "slides/index.html#additional-resources",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Additional resources",
+    "text": "Additional resources\nWhere to find more on NEST\n\n\n\nSource code of all our packages:  https://github.com/insightsengineering\n\n\n\n\n\nNEST is part of https://pharmaverse.org/"
+  },
+  {
+    "objectID": "slides/index.html#additional-resources-1",
+    "href": "slides/index.html#additional-resources-1",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Additional resources",
+    "text": "Additional resources\nWhere to find more on NEST\n\n\n\nHands On Clinical Reporting Using R | Coursera"
+  },
+  {
+    "objectID": "slides/index.html#collaborate",
+    "href": "slides/index.html#collaborate",
+    "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
+    "section": "Collaborate",
+    "text": "Collaborate\nHow can I get involved?\n\n  \nNotice a 🐛 or an idea for enhancements💡?"
+  },
+  {
+    "objectID": "slidespage.html",
+    "href": "slidespage.html",
+    "title": "Slides",
+    "section": "",
+    "text": "View slides in full screen"
+  }
+]
