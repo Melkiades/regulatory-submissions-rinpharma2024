@@ -5,11 +5,13 @@ editor: source
 format: 
   revealjs: 
     footer:  "[Regulatory Submissions with NEST](https://melkiades.github.io/regulatory-submissions-rinpharma2024/)"
+    preview-links: auto
     logo: "images/bottom_logo.png"
     theme: slides.scss
-    transition: slide
+    transition: fade
     slide-number: true
-    chalkboard: true
+    chalkboard:
+      buttons: false
     title-slide-attributes: 
       data-background-image: images/background_with_roche_logo.png
 execute:
@@ -19,18 +21,10 @@ execute:
 cache: true
 ---
 
-<!-- {{< include 00-setup.qmd >}} -->
+{{< include 00-setup.qmd >}}
 
 {{< include 01-why.qmd >}}
 
-<!-- {{< include 02-first-ae-table.qmd >}} -->
+{{< include 02-getting_there.qmd >}}
 
-<!-- {{< include 03-modify-tables.qmd >}} -->
-
-<!-- {{< include 04-other-tables.qmd >}} -->
-
-<!-- {{< include 05-table-shells.qmd >}} -->
-
-<!-- {{< include 06-export.qmd >}} -->
-
-<!-- {{< include 07-thank-you.qmd >}} -->
+{{< include 03-conclusion.qmd >}}

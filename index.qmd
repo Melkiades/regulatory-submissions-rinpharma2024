@@ -30,7 +30,7 @@ The workshop is not designed only for those who are masters in R. We will bring 
 
 ## Prework
 
-Before attending the workshop please check our [posit cloud](https://posit.cloud/spaces/562648/content/) and create your own assignment. All packages needed are already installed there (it is a clone of the exercise folder).
+Before attending the workshop please check our [posit cloud work space](https://posit.cloud/spaces/562648/join?access_code=fDZ1hAmNReOf6JuvxQXcHXTZezAu1qs0vrnUfyXh) and create your own assignment. All packages needed are already installed there (it is a clone of the exercise folder).
 
 # Instructors
 

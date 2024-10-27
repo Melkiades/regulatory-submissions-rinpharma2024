@@ -6,7 +6,7 @@
 $font-family-sans-serif: "Nunito Sans", sans-serif;
 $presentation-heading-color: #00246B;
 $presentation-title-slide-text-align: "left";
-$presentation-font-size-root: 27px;
+$presentation-font-size-root: 30px;
 $code-block-font-size: 0.6em;
 $link-color: #408EC6;
 $custom-col: #E67E3A;
@@ -128,4 +128,9 @@ details>summary {
   justify-content: center;
   align-items: center;
   height: 90%;
+}
+
+.center{
+  margin: 0!important;
+  height: 30px;
 }

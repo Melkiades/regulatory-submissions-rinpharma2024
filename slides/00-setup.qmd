@@ -21,7 +21,7 @@
 # registerS3method("knit_print", "gt_tbl", knit_print.gt_tbl)
 
 # fill for font awesome icons
-fa_fill <- "#606060"
+fa_fill <- "#606888"
 ```
 
 ## Licensing

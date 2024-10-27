@@ -3,21 +3,239 @@
 ## Main task: _reporting clinical trials_
 
 <br>
-
+<br>
 <br>
 
 Purpose of regulatory submissions is to show efficacy and safety of new drugs.
 
+. . .
+
+<br>
+
 - Deliver analysis reports, datasets, and software
 - Health Authorities (HA) need to be able to reproduce key results
+
 
 ## Why migrate to R in Clinical Trials?
 _Benefits for all_
 
 <br>
+<br>
+
+::: incremental
 
 * **Cost Efficiency:** R is free, reducing software costs.
+
 * **Flexibility:** R offers greater customization and a vast package ecosystem.
+
 * **Community Support and Collaboration:** R has a large, active community driving rapid innovation.
 
+:::
 
+##
+![](images/community_support.png)
+
+::: footer
+From [R/Adoption Series: R and Shiny in Regulatory Submissions](https://www.youtube.com/watch?v=wKG8VyZg6V0)
+:::
+
+##
+
+![](images/rconsortium_companies_involved.png)
+
+::: footer
+From [R/Adoption Series: R and Shiny in Regulatory Submissions](https://www.youtube.com/watch?v=wKG8VyZg6V0)
+:::
+
+##
+
+:::: {.columns .v-center-container}
+::: {.column width="50%"}
+![](images/pharmaverse.png)
+:::
+
+::: {.column width="50%"}
+![](images/pharmaverse_companies_involved.png)
+:::
+::::
+
+::: footer
+From [https://pharmaverse.org/](https://pharmaverse.org/)
+:::
+
+## Why migrating to R in Clinical Trials?
+_What's in it for us_
+
+<br>
+
+::: incremental
+
+* **Talent Pool:** Growing number of professionals trained in R.
+* **Transparency:** R’s open-source nature ensures full transparency and reproducibility.
+* **Integration:** R easily integrates with modern data tools and platforms.
+* **R is a transversal skill:** other business units may benefit from R programmers.
+* **Scalability in complexity:** very novel methods can be readily applied to clinical trials growing in complexity.
+
+:::
+
+## Roche - Pioneering modernised solutions in R
+
+<br> <br>
+
+. . .
+
+2017 &nbsp;&nbsp;&rarr; **PoCs**
+
+{rtables}, {teal} for interactive work were launched and presented at RinPharma
+
+<br>
+
+. . .
+
+2021 &nbsp;&nbsp;&rarr; **Open-source**
+
+{rtables} made the first CRAN release, followed by open source of the codebase to kick off collaborations with other companies
+
+
+## Roche - Pioneering modernised solutions in R
+
+<br> <br>
+
+. . .
+
+2023 &nbsp;&nbsp;&rarr; **Adoption of tools and systems**
+
+Validated environment to deliver our vision of R in submissions
+
+<br>
+
+. . .
+
+2024 &nbsp;&nbsp;&rarr; **E2E submission in R**
+
+
+## [Roche's End-to-End R Journey to Submission ](https://www.youtube.com/watch?v=BlJNILSoZlM)
+
+![](images/01_E2E_submissions.png)
+
+#
+
+&rarr; **Regulatory Acceptance:** R is increasingly accepted by regulatory agencies.
+
+<br>
+
+. . .
+
+_Evolution or Revolution?_
+
+
+## 
+
+![](images/01_Rconsortium_r_submission_wg_and_fda.png)
+
+::: footer
+From [R/Adoption Series: R and Shiny in Regulatory Submissions](https://www.youtube.com/watch?v=wKG8VyZg6V0)
+:::
+
+## 
+
+
+![](images/01_example_table_pilot1.png)
+
+::: footer
+From [R/Adoption Series: R and Shiny in Regulatory Submissions](https://www.youtube.com/watch?v=wKG8VyZg6V0)
+:::
+
+## 
+
+![](images/01_example_km_plot_pilot2.png)
+
+::: footer
+From [R/Adoption Series: R and Shiny in Regulatory Submissions](https://www.youtube.com/watch?v=wKG8VyZg6V0)
+:::
+
+##
+
+:::: {.columns .v-center-container}
+::: {.column width="80%"}
+![](images/01_pilot2_usesTealRtables.png)
+:::
+
+::: {.column width="70%"}
+![](images/01_pilot2_usesRtables.png)
+:::
+::::
+
+::: footer
+Check [https://github.com/RConsortium/submissions-pilot2/](https://github.com/RConsortium/submissions-pilot2/)
+:::
+
+## Findings and issues from FDA
+
+<br>
+<br>
+
+1. Different versions (R and open-source changes fast!)
+2. Different OS (Linux and Windows)
+3. Interactive features and p-hacking
+
+. . .
+
+<br>
+
+1.-2.  Docker or WebAssembly (Pilot 4)
+3. Even if p-hacking is NOT technology dependent, the ease-of-use and tweaking binds interactive features to the exploratory world
+
+<br>
+
+::: footer
+From Hye Soo Cho, FDA, in [R/Adoption Series: R and Shiny in Regulatory Submissions](https://www.youtube.com/watch?v=wKG8VyZg6V0)
+:::
+
+## 
+
+![](images/01_FDA_suggestions_for_r_submissions.png)
+
+::: footer
+From [R/Adoption Series: R and Shiny in Regulatory Submissions](https://www.youtube.com/watch?v=wKG8VyZg6V0)
+:::
+
+#
+
+**Reproducibility and validation** - CRAN and extensive CI/CD testing, precise documentation and versioning
+
+<br>
+
+. . .
+
+**Open-source** -  Collaboration and transparency accelerates industry towards standardization due to a wider adoption (faster submissions?)
+
+<br>
+
+. . .
+
+**Interactivity** - {teal} as exploratory tool, integrates standard TLF, enables novel findings, and fast reviewer responses
+
+
+## What is NEST
+_Accelerating Clinical Reporting_
+
+:::: {.columns .v-center-container}
+::: {.column width="30%"}
+![](images/NEST.png)
+:::
+
+::: {.column width="50%"}
+
+A collection of _open-sourced_ R packages, which enables _fast_ and _efficient_ insights generation under clinical research settings, for both _exploratory_ and _regulatory_ purposes.
+
+:::
+::::
+
+
+## Landscape of NEST Products
+_Working towards a complete solution for R-based insights delivery_
+
+<br>
+
+![](images/01_package_hierarchy_description.png)

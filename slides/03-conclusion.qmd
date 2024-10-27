@@ -1,0 +1,82 @@
+# What do we expect?
+
+#
+
+**Short-Term Considerations:**
+
+The migration process requires initial investment in terms of time, resources, and training. Existing workflows and scripts need to be rewritten or adapted, which can be a significant effort.
+
+. . .
+
+<br>
+
+**Long-Term Benefits:**
+
+The long-term benefits of migrating to R include cost savings, increased flexibility, access to a broader talent pool, and staying ahead in terms of technological advancements. If regulatory bodies continue to increase acceptance of R, the case for migration becomes even stronger.
+
+
+## Additional resources
+_Where to find more on NEST_
+
+<br>
+
+. . .
+
+* Source code of all our packages: `r fontawesome::fa("github", fill = fa_fill)` [https://github.com/insightsengineering](https://github.com/insightsengineering)
+
+. . .
+
+<br>
+
+* NEST is part of [https://pharmaverse.org/](https://pharmaverse.org/)
+
+![](images/pharmaverse.png){width=20% height=20%}
+
+## Additional resources
+_Where to find more on NEST_
+
+<br>
+
+. . .
+
+* [Hands On Clinical Reporting Using R | Coursera](https://www.coursera.org/learn/hands-on-clinical-reporting-using-r)
+
+![](images/coursera.png)
+
+## Collaborate
+_How can I get involved?_
+
+. . .
+
+<br>
+<br>
+<br>
+
+Notice a 🐛 or an idea for enhancements💡?
+
+
+# **Get in touch!**
+
+#
+
+. . .
+
+`r fontawesome::fa("github", fill = fa_fill)` We encourage you to collaborate with us and contribute our code base can be found here: [https://github.com/insightsengineering](https://github.com/insightsengineering)
+
+. . .
+
+<br>
+
+🖮 You can get in touch with us on **slack** _#pharmaverse-pkgs_ channel [here](https://pharmaverse.slack.com/)
+
+. . .
+
+<br>
+
+📧 or contact Leena our product owner if you are interested in industry collaboration ([leena.khatri@roche.com](leena.khatri@roche.com))
+
+
+#
+
+🙏 [Click here to submit workshop feedback](https://www.smartsurvey.co.uk/s/J4A8FS/){target="_blank"}
+
