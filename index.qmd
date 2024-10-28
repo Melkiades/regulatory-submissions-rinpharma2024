@@ -6,7 +6,7 @@ editor: source
 
 ------------------------------------------------------------------------
 
-🗓 October 28, 2024 \| 9:00am - 12:30pm EDT
+🗓 October 28, 2024 \| 9:00am - 11:30pm EDT
 
 🏨 Virtual
 
@@ -33,6 +33,31 @@ The workshop is not designed only for those who are masters in R. We will bring 
 Before attending the workshop please check our [posit cloud work space](https://posit.cloud/spaces/562648/join?access_code=fDZ1hAmNReOf6JuvxQXcHXTZezAu1qs0vrnUfyXh) and create your own assignment. All packages needed are already installed there (it is a clone of the exercise folder).
 
 ## Additional resources
+_Where to find more on NEST_
+
+* Source code of all our packages: [https://github.com/insightsengineering](https://github.com/insightsengineering)
+
+* NEST is part of [https://pharmaverse.org/](https://pharmaverse.org/)
+
+* Check [cardinal](https://pharmaverse.github.io/cardinal/quarto/table-templates/template-table_02.html)
+
+* Check [TLG-catalog](https://insightsengineering.github.io/tlg-catalog/stable) for hundreds of ready-made TLGs
+
+* Check [teal.gallery](https://insightsengineering.github.io/teal.gallery/)
+
+* [Hands On Clinical Reporting Using R | Coursera](https://www.coursera.org/learn/hands-on-clinical-reporting-using-r)
+
+## Collaborate
+_How can I get involved?_
+
+Notice a 🐛 or an idea for enhancements💡? **Get in touch!**
+
+* We encourage you to collaborate with us and contribute our code base can be found here: [https://github.com/insightsengineering](https://github.com/insightsengineering)
+
+🖮 You can get in touch with us on **slack** _#pharmaverse-pkgs_ channel [here](https://pharmaverse.slack.com/)
+
+📧 or contact Leena our product owner if you are interested in industry collaboration ([leena.khatri@roche.com](leena.khatri@roche.com))
+
 
 # Instructors
 

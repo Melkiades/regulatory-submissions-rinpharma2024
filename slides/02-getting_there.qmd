@@ -154,9 +154,27 @@ demographic_table |>
 
 Here is how to do it in {rtables} (for tabulation) and {tern} (for the summary functions):
 
+::: panel-tabset
+### Code
+
+```{r}
+#| eval: false
+#| echo: true
+library(rtables)
+library(tern)
+
+lyt <- basic_table() |> 
+  split_cols_by("treatment") |> 
+  analyze_vars(c("gender", "age"))
+
+build_table(lyt, data)
+```
+
+### Output
+
 ```{r}
 #| eval: true
-#| echo: true
+#| echo: false
 library(rtables)
 library(tern)
 
@@ -167,6 +185,7 @@ lyt <- basic_table() |>
 build_table(lyt, data) |> 
   as_html()
 ```
+:::
 
 ::: footer
 Check [{rtables} documentation](https://insightsengineering.github.io/rtables/latest-tag/)
@@ -200,13 +219,17 @@ Check [cardinal](https://pharmaverse.github.io/cardinal/quarto/table-templates/t
 
 ## Exercise 2 - Data
 
+<br>
+<br>
+<br>
+
 ::: {.callout-tip}
 ## Data Tip
 
 Checking {cardinal} template you can directly use the synthetic data set as described.
 :::
 
-. . .
+## Exercise 2 - Data
 
 ::: panel-tabset
 ### Code
@@ -260,8 +283,13 @@ anl <- left_join(adsl, advs, by = "USUBJID")
 
 head(anl) |> gt::gt()
 ```
+:::
 
 ## Exercise 2 - Building the table
+
+<br>
+<br>
+<br>
 
 ::: {.callout-tip}
 ## Tip
@@ -278,6 +306,7 @@ countdown::countdown(minutes = 15, font_size = "1.5em")
 ## Exercise 2 - {rtables} solution
 
 ::: panel-tabset
+
 ### Code
 
 ```{r}
@@ -312,6 +341,7 @@ tbl
 ```{r}
 #| eval: true
 #| echo: false
+library(flextable)
 
 df <- anl |>
   df_explicit_na()
@@ -334,7 +364,7 @@ lyt <- basic_table(show_colcounts = TRUE) |>
 tbl <- build_table(lyt, df = df) |> 
   prune_table()
 
-tbl |> as_html()
+tbl |> tt_to_flextable()
 ```
 :::
 
@@ -518,6 +548,11 @@ Check [TLG-catalog](https://insightsengineering.github.io/tlg-catalog/stable) fo
 :::
 
 ## Exercise 5 - Try {teal.gallery}
+
+<br>
+<br>
+<br>
+
 ::: {.callout-tip}
 ## Play with efficacy app ;)
 

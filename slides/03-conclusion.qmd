@@ -37,6 +37,24 @@ _Where to find more on NEST_
 
 <br>
 
+* Check [cardinal](https://pharmaverse.github.io/cardinal/quarto/table-templates/template-table_02.html)
+
+<br>
+
+* Check [TLG-catalog](https://insightsengineering.github.io/tlg-catalog/stable)
+
+<br>
+
+* Check [teal.gallery](https://insightsengineering.github.io/teal.gallery/)
+
+<br>
+
+
+## Additional resources
+_Where to find more on NEST_
+
+<br>
+
 . . .
 
 * [Hands On Clinical Reporting Using R | Coursera](https://www.coursera.org/learn/hands-on-clinical-reporting-using-r)

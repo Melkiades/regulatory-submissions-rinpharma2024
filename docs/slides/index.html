@@ -382,6 +382,8 @@
   </style>
   <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
   <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
+  <link href="../site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+  <script src="../site_libs/tabwid-1.1.3/tabwid.js"></script>
 <meta property="og:title" content="The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity">
 <meta property="og:site-name" content="The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity">
 <meta name="twitter:title" content="The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity">
@@ -686,7 +688,7 @@
 <li>The data should have only age, gender, and treatment columns.</li>
 <li>The table should include the mean and standard deviation of age, the count and percentage.</li>
 </ul>
-<div class="countdown" id="timer_0c7bb723" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:1.5em;">
+<div class="countdown" id="timer_359bf278" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:1.5em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1742,6 +1744,10 @@ N Male (%)
 <section id="exercise-1---bonus-solution" class="slide level2">
 <h2>Exercise 1 - Bonus Solution</h2>
 <p>Here is how to do it in {rtables} (for tabulation) and {tern} (for the summary functions):</p>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Code</a></li><li><a href="#tabset-3-2">Output</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(rtables)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(tern)</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -1749,8 +1755,9 @@ N Male (%)
 <span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">split_cols_by</span>(<span class="st">"treatment"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">analyze_vars</span>(<span class="fu">c</span>(<span class="st">"gender"</span>, <span class="st">"age"</span>))</span>
 <span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="fu">build_table</span>(lyt, data) <span class="sc">|&gt;</span> </span>
-<span id="cb3-9"><a href="#cb3-9"></a>  <span class="fu">as_html</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="fu">build_table</span>(lyt, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-2">
 
 <div class="rtables-all-parts-block rtables-container">
 <div class="rtables-titles-block rtables-container">
@@ -1814,6 +1821,9 @@ N Male (%)
 </table>
 <div class="rtables-footers-block rtables-container"></div>
 </div>
+</div>
+</div>
+</div>
 <div class="footer">
 <p>Check <a href="https://insightsengineering.github.io/rtables/latest-tag/">{rtables} documentation</a></p>
 </div>
@@ -1854,8 +1864,10 @@ N Male (%)
 </div>
 </div>
 </div>
-<div class="fragment">
-<p>::: panel-tabset ### Code</p>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Code</a></li><li><a href="#tabset-4-2">Output</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>adsl <span class="ot">&lt;-</span> random.cdisc.data<span class="sc">::</span>cadsl</span>
 <span id="cb4-2"><a href="#cb4-2"></a>advs <span class="ot">&lt;-</span> random.cdisc.data<span class="sc">::</span>cadvs</span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
@@ -1875,7 +1887,8 @@ N Male (%)
 <span id="cb4-17"><a href="#cb4-17"></a>anl <span class="ot">&lt;-</span> <span class="fu">left_join</span>(adsl, advs, <span class="at">by =</span> <span class="st">"USUBJID"</span>)</span>
 <span id="cb4-18"><a href="#cb4-18"></a></span>
 <span id="cb4-19"><a href="#cb4-19"></a><span class="fu">head</span>(anl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h3 id="output-2">Output</h3>
+</div>
+<div id="tabset-4-2">
 
 <div id="tfrqeytcyn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#tfrqeytcyn table {
@@ -2737,6 +2750,8 @@ N Male (%)
 </table>
 </div>
 </div>
+</div>
+</div>
 </section>
 <section id="exercise-2---building-the-table" class="slide level2">
 <h2>Exercise 2 - Building the table</h2>
@@ -2753,7 +2768,7 @@ N Male (%)
 </div>
 </div>
 </div>
-<div class="countdown" id="timer_fe4b17dd" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:1.5em;">
+<div class="countdown" id="timer_c8d895c1" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:1.5em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2761,9 +2776,9 @@ N Male (%)
 <section id="exercise-2---rtables-solution" class="slide level2">
 <h2>Exercise 2 - {rtables} solution</h2>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Code</a></li><li><a href="#tabset-3-2">Output</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Code</a></li><li><a href="#tabset-5-2">Output</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-5-1">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>df <span class="ot">&lt;-</span> anl <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">df_explicit_na</span>()</span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
@@ -2787,251 +2802,9 @@ N Male (%)
 <span id="cb5-21"><a href="#cb5-21"></a></span>
 <span id="cb5-22"><a href="#cb5-22"></a>tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-3-2">
+<div id="tabset-5-2">
 
-<div class="rtables-all-parts-block rtables-container">
-<div class="rtables-titles-block rtables-container">
-<div class="rtables-main-titles-block rtables-container">
-<p class="rtables-main-title"></p>
-</div>
-<div class="rtables-subtitles-block rtables-container"></div>
-</div>
-<table class="table table-condensed table-hover">
-<tbody><tr style="white-space: pre;">
-<th style="text-align: left;"></th>
-<th style="text-align: center;">A: Drug X</th>
-<th style="text-align: center;">B: Placebo</th>
-<th style="text-align: center;">C: Combination</th>
-<th style="text-align: center;">Total Population</th>
-</tr>
-<tr style="white-space: pre;">
-<th style="text-align: left; border-bottom: 1px solid black; border-bottom: 1px solid black;">Characteristic</th>
-<th style="text-align: center; border-bottom: 1px solid black;">(N=134)</th>
-<th style="text-align: center; border-bottom: 1px solid black;">(N=134)</th>
-<th style="text-align: center; border-bottom: 1px solid black;">(N=132)</th>
-<th style="text-align: center; border-bottom: 1px solid black;">(N=400)</th>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left;">Sex</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  F</td>
-<td style="text-align: center;">79 (59%)</td>
-<td style="text-align: center;">82 (61.2%)</td>
-<td style="text-align: center;">70 (53%)</td>
-<td style="text-align: center;">231 (57.8%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  M</td>
-<td style="text-align: center;">55 (41%)</td>
-<td style="text-align: center;">52 (38.8%)</td>
-<td style="text-align: center;">62 (47%)</td>
-<td style="text-align: center;">169 (42.2%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left;">Age</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  Mean (SD)</td>
-<td style="text-align: center;">33.8 (6.6)</td>
-<td style="text-align: center;">35.4 (7.9)</td>
-<td style="text-align: center;">35.4 (7.7)</td>
-<td style="text-align: center;">34.9 (7.4)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  Median (Min - Max)</td>
-<td style="text-align: center;">33.0 (21.0 - 50.0)</td>
-<td style="text-align: center;">35.0 (21.0 - 62.0)</td>
-<td style="text-align: center;">35.0 (20.0 - 69.0)</td>
-<td style="text-align: center;">34.0 (20.0 - 69.0)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left;">AGEGR1</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  ≥17 to &amp;lt;65</td>
-<td style="text-align: center;">134 (100%)</td>
-<td style="text-align: center;">134 (100%)</td>
-<td style="text-align: center;">131 (99.2%)</td>
-<td style="text-align: center;">399 (99.8%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  ≥65</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1 (0.8%)</td>
-<td style="text-align: center;">1 (0.2%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left;">Race</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  ASIAN</td>
-<td style="text-align: center;">68 (50.7%)</td>
-<td style="text-align: center;">67 (50%)</td>
-<td style="text-align: center;">73 (55.3%)</td>
-<td style="text-align: center;">208 (52%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  BLACK OR AFRICAN AMERICAN</td>
-<td style="text-align: center;">31 (23.1%)</td>
-<td style="text-align: center;">28 (20.9%)</td>
-<td style="text-align: center;">32 (24.2%)</td>
-<td style="text-align: center;">91 (22.8%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  WHITE</td>
-<td style="text-align: center;">27 (20.1%)</td>
-<td style="text-align: center;">26 (19.4%)</td>
-<td style="text-align: center;">21 (15.9%)</td>
-<td style="text-align: center;">74 (18.5%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  AMERICAN INDIAN OR ALASKA NATIVE</td>
-<td style="text-align: center;">8 (6%)</td>
-<td style="text-align: center;">11 (8.2%)</td>
-<td style="text-align: center;">6 (4.5%)</td>
-<td style="text-align: center;">25 (6.2%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  MULTIPLE</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1 (0.7%)</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1 (0.2%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1 (0.7%)</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1 (0.2%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left;">Ethnicity</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  HISPANIC OR LATINO</td>
-<td style="text-align: center;">15 (11.2%)</td>
-<td style="text-align: center;">18 (13.4%)</td>
-<td style="text-align: center;">15 (11.4%)</td>
-<td style="text-align: center;">48 (12%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  NOT HISPANIC OR LATINO</td>
-<td style="text-align: center;">104 (77.6%)</td>
-<td style="text-align: center;">103 (76.9%)</td>
-<td style="text-align: center;">101 (76.5%)</td>
-<td style="text-align: center;">308 (77%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  NOT REPORTED</td>
-<td style="text-align: center;">6 (4.5%)</td>
-<td style="text-align: center;">10 (7.5%)</td>
-<td style="text-align: center;">11 (8.3%)</td>
-<td style="text-align: center;">27 (6.8%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  UNKNOWN</td>
-<td style="text-align: center;">9 (6.7%)</td>
-<td style="text-align: center;">3 (2.2%)</td>
-<td style="text-align: center;">5 (3.8%)</td>
-<td style="text-align: center;">17 (4.2%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left;">Country</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  CHN</td>
-<td style="text-align: center;">74 (55.2%)</td>
-<td style="text-align: center;">81 (60.4%)</td>
-<td style="text-align: center;">64 (48.5%)</td>
-<td style="text-align: center;">219 (54.8%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  USA</td>
-<td style="text-align: center;">10 (7.5%)</td>
-<td style="text-align: center;">13 (9.7%)</td>
-<td style="text-align: center;">17 (12.9%)</td>
-<td style="text-align: center;">40 (10%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  BRA</td>
-<td style="text-align: center;">13 (9.7%)</td>
-<td style="text-align: center;">7 (5.2%)</td>
-<td style="text-align: center;">10 (7.6%)</td>
-<td style="text-align: center;">30 (7.5%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  PAK</td>
-<td style="text-align: center;">12 (9%)</td>
-<td style="text-align: center;">9 (6.7%)</td>
-<td style="text-align: center;">10 (7.6%)</td>
-<td style="text-align: center;">31 (7.8%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  NGA</td>
-<td style="text-align: center;">8 (6%)</td>
-<td style="text-align: center;">7 (5.2%)</td>
-<td style="text-align: center;">11 (8.3%)</td>
-<td style="text-align: center;">26 (6.5%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  RUS</td>
-<td style="text-align: center;">5 (3.7%)</td>
-<td style="text-align: center;">8 (6%)</td>
-<td style="text-align: center;">6 (4.5%)</td>
-<td style="text-align: center;">19 (4.8%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  JPN</td>
-<td style="text-align: center;">5 (3.7%)</td>
-<td style="text-align: center;">4 (3%)</td>
-<td style="text-align: center;">9 (6.8%)</td>
-<td style="text-align: center;">18 (4.5%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  GBR</td>
-<td style="text-align: center;">4 (3%)</td>
-<td style="text-align: center;">3 (2.2%)</td>
-<td style="text-align: center;">2 (1.5%)</td>
-<td style="text-align: center;">9 (2.2%)</td>
-</tr>
-<tr style="white-space: pre;">
-<td style="text-align: left; padding-left: 3ch;">  CAN</td>
-<td style="text-align: center;">3 (2.2%)</td>
-<td style="text-align: center;">2 (1.5%)</td>
-<td style="text-align: center;">3 (2.3%)</td>
-<td style="text-align: center;">8 (2%)</td>
-</tr>
-</tbody><caption style="caption-side: top;"></caption>
-</table>
-<div class="rtables-footers-block rtables-container"></div>
-</div>
+<div class="tabwid tabwid_left"><style>.cl-a8fcddce{table-layout:auto;}.cl-a8cc0848{font-family:'Arial';font-size:9pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a8cc087a{font-family:'Arial';font-size:9pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a8e541c8{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:0;padding-top:0;padding-left:5.4pt;padding-right:5.4pt;line-height: 1;background-color:transparent;}.cl-a8e54254{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:0;padding-top:0;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a8e54272{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:0;padding-top:3pt;padding-left:5.4pt;padding-right:5.4pt;line-height: 1;background-color:transparent;}.cl-a8e54290{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:0;padding-top:0;padding-left:5.4pt;padding-right:5.4pt;line-height: 1;background-color:transparent;}.cl-a8e5429a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:0;padding-top:0;padding-left:11.1pt;padding-right:5.4pt;line-height: 1;background-color:transparent;}.cl-a8e60bee{background-color:transparent;vertical-align: top;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0.5pt solid rgba(102, 102, 102, 1.00);border-right: 0.5pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60c20{background-color:transparent;vertical-align: top;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0.5pt solid rgba(102, 102, 102, 1.00);border-right: 0.5pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60c34{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60c70{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60c84{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0.5pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60c8e{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60ca2{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60cb6{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0.5pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60cc0{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60cd4{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60ce8{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0.5pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60cf2{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60d06{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60d1a{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0.5pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60d24{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60d38{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60d39{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0.5pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60d4c{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60d74{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60d88{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0.5pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60da6{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60db0{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60dc4{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0.5pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60dce{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60de2{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60df6{background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0.5pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60e0a{background-color:transparent;vertical-align: top;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60e14{background-color:transparent;vertical-align: top;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a8e60e1e{background-color:transparent;vertical-align: top;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0.5pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-a8fcddce"><thead><tr style="overflow-wrap:break-word;"><th class="cl-a8e60bee"><p class="cl-a8e541c8"><span class="cl-a8cc0848">Characteristic</span></p></th><th class="cl-a8e60c20"><p class="cl-a8e54254"><span class="cl-a8cc0848">A: Drug X (N=134)</span></p></th><th class="cl-a8e60c20"><p class="cl-a8e54254"><span class="cl-a8cc0848">B: Placebo (N=134)</span></p></th><th class="cl-a8e60c20"><p class="cl-a8e54254"><span class="cl-a8cc0848">C: Combination (N=132)</span></p></th><th class="cl-a8e60c20"><p class="cl-a8e54254"><span class="cl-a8cc0848">Total Population (N=400)</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c34"><p class="cl-a8e54272"><span class="cl-a8cc0848">Sex</span></p></td><td class="cl-a8e60c70"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60c70"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60c70"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60c84"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">F</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">79 (59%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">82 (61.2%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">70 (53%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">231 (57.8%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">M</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">55 (41%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">52 (38.8%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">62 (47%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">169 (42.2%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60cc0"><p class="cl-a8e54272"><span class="cl-a8cc0848">Age</span></p></td><td class="cl-a8e60cd4"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60cd4"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60cd4"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60ce8"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">Mean (SD)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">33.8 (6.6)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">35.4 (7.9)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">35.4 (7.7)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">34.9 (7.4)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60cf2"><p class="cl-a8e5429a"><span class="cl-a8cc087a">Median (Min - Max)</span></p></td><td class="cl-a8e60d06"><p class="cl-a8e54290"><span class="cl-a8cc087a">33.0 (21.0 - 50.0)</span></p></td><td class="cl-a8e60d06"><p class="cl-a8e54290"><span class="cl-a8cc087a">35.0 (21.0 - 62.0)</span></p></td><td class="cl-a8e60d06"><p class="cl-a8e54290"><span class="cl-a8cc087a">35.0 (20.0 - 69.0)</span></p></td><td class="cl-a8e60d1a"><p class="cl-a8e54290"><span class="cl-a8cc087a">34.0 (20.0 - 69.0)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c34"><p class="cl-a8e54272"><span class="cl-a8cc0848">AGEGR1</span></p></td><td class="cl-a8e60c70"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60c70"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60c70"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60c84"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">≥17 to &amp;lt;65</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">134 (100%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">134 (100%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">131 (99.2%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">399 (99.8%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">≥65</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">0</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">0</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">1 (0.8%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">1 (0.2%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60d24"><p class="cl-a8e54272"><span class="cl-a8cc0848">Race</span></p></td><td class="cl-a8e60d38"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60d38"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60d38"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60d39"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">ASIAN</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">68 (50.7%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">67 (50%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">73 (55.3%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">208 (52%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">BLACK OR AFRICAN AMERICAN</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">31 (23.1%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">28 (20.9%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">32 (24.2%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">91 (22.8%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">WHITE</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">27 (20.1%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">26 (19.4%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">21 (15.9%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">74 (18.5%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">AMERICAN INDIAN OR ALASKA NATIVE</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">8 (6%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">11 (8.2%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">6 (4.5%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">25 (6.2%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">MULTIPLE</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">0</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">1 (0.7%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">0</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">1 (0.2%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">0</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">1 (0.7%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">0</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">1 (0.2%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60d4c"><p class="cl-a8e54272"><span class="cl-a8cc0848">Ethnicity</span></p></td><td class="cl-a8e60d74"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60d74"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60d74"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60d88"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">HISPANIC OR LATINO</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">15 (11.2%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">18 (13.4%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">15 (11.4%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">48 (12%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">NOT HISPANIC OR LATINO</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">104 (77.6%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">103 (76.9%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">101 (76.5%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">308 (77%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">NOT REPORTED</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">6 (4.5%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">10 (7.5%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">11 (8.3%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">27 (6.8%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">UNKNOWN</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">9 (6.7%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">3 (2.2%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">5 (3.8%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">17 (4.2%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60da6"><p class="cl-a8e54272"><span class="cl-a8cc0848">Country</span></p></td><td class="cl-a8e60db0"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60db0"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60db0"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td><td class="cl-a8e60dc4"><p class="cl-a8e54290"><span class="cl-a8cc087a"> </span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">CHN</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">74 (55.2%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">81 (60.4%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">64 (48.5%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">219 (54.8%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">USA</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">10 (7.5%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">13 (9.7%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">17 (12.9%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">40 (10%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">BRA</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">13 (9.7%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">7 (5.2%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">10 (7.6%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">30 (7.5%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">PAK</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">12 (9%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">9 (6.7%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">10 (7.6%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">31 (7.8%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">NGA</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">8 (6%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">7 (5.2%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">11 (8.3%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">26 (6.5%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">RUS</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">5 (3.7%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">8 (6%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">6 (4.5%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">19 (4.8%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60dce"><p class="cl-a8e5429a"><span class="cl-a8cc087a">JPN</span></p></td><td class="cl-a8e60de2"><p class="cl-a8e54290"><span class="cl-a8cc087a">5 (3.7%)</span></p></td><td class="cl-a8e60de2"><p class="cl-a8e54290"><span class="cl-a8cc087a">4 (3%)</span></p></td><td class="cl-a8e60de2"><p class="cl-a8e54290"><span class="cl-a8cc087a">9 (6.8%)</span></p></td><td class="cl-a8e60df6"><p class="cl-a8e54290"><span class="cl-a8cc087a">18 (4.5%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60c8e"><p class="cl-a8e5429a"><span class="cl-a8cc087a">GBR</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">4 (3%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">3 (2.2%)</span></p></td><td class="cl-a8e60ca2"><p class="cl-a8e54290"><span class="cl-a8cc087a">2 (1.5%)</span></p></td><td class="cl-a8e60cb6"><p class="cl-a8e54290"><span class="cl-a8cc087a">9 (2.2%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a8e60e0a"><p class="cl-a8e5429a"><span class="cl-a8cc087a">CAN</span></p></td><td class="cl-a8e60e14"><p class="cl-a8e54290"><span class="cl-a8cc087a">3 (2.2%)</span></p></td><td class="cl-a8e60e14"><p class="cl-a8e54290"><span class="cl-a8cc087a">2 (1.5%)</span></p></td><td class="cl-a8e60e14"><p class="cl-a8e54290"><span class="cl-a8cc087a">3 (2.3%)</span></p></td><td class="cl-a8e60e1e"><p class="cl-a8e54290"><span class="cl-a8cc087a">8 (2%)</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 </div>
@@ -3039,9 +2812,9 @@ N Male (%)
 <section id="exercise-2---gtsummary-solution" class="slide level2">
 <h2>Exercise 2 - {gtsummary} solution</h2>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Code</a></li><li><a href="#tabset-4-2">Output</a></li></ul>
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Code</a></li><li><a href="#tabset-6-2">Output</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1">
+<div id="tabset-6-1">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(gtsummary)</span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
 <span id="cb6-3"><a href="#cb6-3"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">df_explicit_na</span>()</span>
@@ -3073,7 +2846,7 @@ N Male (%)
 <span id="cb6-29"><a href="#cb6-29"></a></span>
 <span id="cb6-30"><a href="#cb6-30"></a>tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-4-2">
+<div id="tabset-6-2">
 
 <div id="abdjaeuyhw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#abdjaeuyhw table {
@@ -3741,7 +3514,7 @@ N = 400</span></span></th>
 </div>
 </div>
 </div>
-<div class="countdown" id="timer_83bc12f1" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:1.5em;">
+<div class="countdown" id="timer_9bd11196" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:1.5em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -3773,7 +3546,7 @@ N = 400</span></span></th>
 </div>
 </div>
 </div>
-<div class="countdown" id="timer_fade0a2e" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:1.5em;">
+<div class="countdown" id="timer_44c585ef" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:1.5em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -3809,7 +3582,7 @@ N = 400</span></span></th>
 </div>
 </div>
 </div>
-<div class="countdown" id="timer_5b27c148" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:1.5em;">
+<div class="countdown" id="timer_478960ee" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:1.5em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -3870,6 +3643,23 @@ N = 400</span></span></th>
 </div>
 </section>
 <section id="additional-resources-1" class="slide level2">
+<h2>Additional resources</h2>
+<p><em>Where to find more on NEST</em></p>
+<p><br></p>
+<ul>
+<li>Check <a href="https://pharmaverse.github.io/cardinal/quarto/table-templates/template-table_02.html">cardinal</a></li>
+</ul>
+<p><br></p>
+<ul>
+<li>Check <a href="https://insightsengineering.github.io/tlg-catalog/stable">TLG-catalog</a></li>
+</ul>
+<p><br></p>
+<ul>
+<li>Check <a href="https://insightsengineering.github.io/teal.gallery/">teal.gallery</a></li>
+</ul>
+<p><br></p>
+</section>
+<section id="additional-resources-2" class="slide level2">
 <h2>Additional resources</h2>
 <p><em>Where to find more on NEST</em></p>
 <p><br></p>
