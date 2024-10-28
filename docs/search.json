@@ -1,83 +1,52 @@
 [
   {
-    "objectID": "slidespage.html",
-    "href": "slidespage.html",
-    "title": "Slides",
+    "objectID": "exercises.html",
+    "href": "exercises.html",
+    "title": "Getting there: Exercises",
     "section": "",
-    "text": "View slides in full screen",
-    "crumbs": [
-      "Slides"
-    ]
-  },
-  {
-    "objectID": "license.html",
-    "href": "license.html",
-    "title": "License",
-    "section": "",
-    "text": "This material is based on the original work from the {gtreg} workshop by Shannon Pileggi and Daniel Sjoberg, available here, and adapted under a Creative Commons Attribution 4.0 International License.",
-    "crumbs": [
-      "License"
-    ]
+    "text": "Exercise 1\nCreate a demographic table by using only dplyr.\n\nThe data should have only age, gender, and treatment columns.\nThe table should include the mean and standard deviation of age, the count and percentage.\n\n\n\nShow the code solution\n# Load necessary libraries\nlibrary(dplyr)\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\nShow the code solution\n# Sample data frame with demographic data\nset.seed(123)\ndata <- data.frame(\n  id = 1:100,\n  age = sample(18:80, 100, replace = TRUE),\n  gender = sample(c(\"Male\", \"Female\"), 100, replace = TRUE),\n  treatment = sample(c(\"Treatment A\", \"Treatment B\"), 100, replace = TRUE)\n)\n\n# Count participants per treatment group to get labels with counts\ntreatment_counts <- data |> \n  count(treatment) |> \n  mutate(treatment_label = paste0(treatment, \" (N=\", n, \")\"))\n\n# Create the demographic summary table\ndemographic_table <- data |> \n  # Join with treatment counts to include the labeled treatment names\n  left_join(treatment_counts, by = \"treatment\") |>\n  # Summarize age, female, and male counts and percentages by the labeled treatment\n  group_by(treatment_label) |> \n  summarise(\n    `Mean Age (SD)` = paste0(round(mean(age), 1), \" (\", round(sd(age), 1), \")\"),\n    `N Female (%)` = paste0(sum(gender == \"Female\"), \" (\", round(sum(gender == \"Female\") / n() * 100, 1), \"%)\"),\n    `N Male (%)` = paste0(sum(gender == \"Male\"), \" (\", round(sum(gender == \"Male\") / n() * 100, 1), \"%)\"),\n    .groups = \"drop\"\n  ) |>\n  # Transpose for easy review if needed\n  t() |>\n  print()\n\n\n                [,1]                 [,2]                \ntreatment_label \"Treatment A (N=51)\" \"Treatment B (N=49)\"\nMean Age (SD)   \"50.3 (17.9)\"        \"45.7 (16.3)\"       \nN Female (%)    \"27 (52.9%)\"         \"28 (57.1%)\"        \nN Male (%)      \"24 (47.1%)\"         \"21 (42.9%)\"        \n\n\n\n\nExercise 2\nBuild a demografic table using {rtables} or {gtsummary}. Data is provided as follows:\n\n\nShow the code solution\n# Load Libraries & Data\nlibrary(dplyr)\n\nadsl <- random.cdisc.data::cadsl\nadvs <- random.cdisc.data::cadvs\n\n# Pre-Processing - Add any variables needed in your table to df\nadsl <- adsl |> \n  mutate(AGEGR1 = as.factor(case_when(\n    AGE >= 17 & AGE < 65 ~ \"≥17 to &lt;65\",\n    AGE >= 65 ~ \"≥65\",\n    AGE >= 65 & AGE < 75 ~ \"≥65 to &lt;75\",\n    AGE >= 75 ~ \"≥75\"\n  )))\n\nadvs <- advs |> \n  filter(AVISIT == \"BASELINE\", VSTESTCD == \"TEMP\") %>%\n  select(\"USUBJID\", \"AVAL\")\n\nanl <- left_join(adsl, advs, by = \"USUBJID\")\n\n\n\n\nShow the code solution\n  df <- df %>%\n    filter(.data[[saffl_var]] == \"Y\") %>%\n    df_explicit_na()\n\n  alt_counts_df <- alt_counts_df_preproc(alt_counts_df, id_var, arm_var, saffl_var)\n\n  lyt <- basic_table_annot(show_colcounts, annotations) %>%\n    split_cols_by_arm(arm_var, lbl_overall) %>%\n    analyze_vars(\n      vars = vars,\n      var_labels = lbl_vars,\n      show_labels = \"visible\",\n      .stats = c(\"mean_sd\", \"median_range\", \"count_fraction\"),\n      .formats = NULL,\n      na.rm = na_rm\n    ) %>%\n    append_topleft(\"Characteristic\")\n\n  tbl <- build_table(lyt, df = df, alt_counts_df = alt_counts_df)\n  if (prune_0) tbl <- prune_table(tbl)\n\n  tbl\n\n\n\n\nShow the code solution\ndf <- df %>% df_explicit_na()\n\ntbl <- df %>%\n  tbl_summary(\n    by = arm_var,\n    type = all_continuous() ~ \"continuous2\",\n    statistic = list(\n      all_continuous() ~ c(\n        \"{mean} ({sd})\",\n        \"{median} ({min} - {max})\"\n      ),\n      all_categorical() ~ \"{n} ({p}%)\"\n    ),\n    digits = all_continuous() ~ 1,\n    missing = ifelse(na_rm, \"no\", \"ifany\"),\n    label = as.list(lbl_vars) %>% setNames(vars)\n  ) %>%\n  gtsummary::bold_labels() %>%\n  modify_header(all_stat_cols() ~ \"**{level}**  \\nN = {n}\") %>%\n  add_overall(last = TRUE, col_label = paste0(\"**\", lbl_overall, \"**  \\nN = {n}\")) %>%\n  gtsummary::add_stat_label(label = all_continuous2() ~ c(\"Mean (SD)\", \"Median (min - max)\")) %>%\n  modify_footnote(update = everything() ~ NA) %>%\n  gtsummary::modify_column_alignment(columns = all_stat_cols(), align = \"right\")\n\n\n\n\nExercise 3\nTLG-catalog\nADAE\n\n\nExercise 4\nteal and ADAE\ndemographic teal.gallery"
   },
   {
     "objectID": "feedback.html",
     "href": "feedback.html",
     "title": "Feedback",
     "section": "",
-    "text": "Thank you for attending the our NEST workshop! Please complete an anonymous survey to provide the workshop presenters feedback. We appreciate your time and thoughtful feedback. ❤️\nClick here to enter the feedback form.",
-    "crumbs": [
-      "Feedback"
-    ]
-  },
-  {
-    "objectID": "exercises.html",
-    "href": "exercises.html",
-    "title": "Getting there: Exercises",
-    "section": "",
-    "text": "Instructions:\nRecommended: Complete these exercises in the dedicated R in Pharma RStudio Cloud work space, which comes with\n\nall packages pre-installed, and\nan Rmarkdown document to fill in.\n\nIt may still be helpful to peek here to verify that your tables match the desired output.\nClick here to enter R in Pharma RStudio Cloud work space for our workshop\nOtherwise: Follow along this document, work on your personal computer, and challenge yourself not to peek at the code solutions until you have completed the exercise.\n\n\nExercise 1\nCreate a demographic table by using only dplyr.\n\nThe data should have only age, gender, and treatment columns.\nThe table should include the mean and standard deviation of age, the count and percentage.\n\n\n\nShow the code solution\n# Load necessary libraries\nlibrary(dplyr)\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\nShow the code solution\n# Sample data frame with demographic data\nset.seed(123)\ndata &lt;- data.frame(\n  id = 1:100,\n  age = sample(18:80, 100, replace = TRUE),\n  gender = sample(c(\"Male\", \"Female\"), 100, replace = TRUE),\n  treatment = sample(c(\"Treatment A\", \"Treatment B\"), 100, replace = TRUE)\n)\n\n# Count participants per treatment group to get labels with counts\ntreatment_counts &lt;- data |&gt; \n  count(treatment) |&gt; \n  mutate(treatment_label = paste0(treatment, \" (N=\", n, \")\"))\n\n# Create the demographic summary table\ndemographic_table &lt;- data |&gt; \n  # Join with treatment counts to include the labeled treatment names\n  left_join(treatment_counts, by = \"treatment\") |&gt;\n  # Summarize age, female, and male counts and percentages by the labeled treatment\n  group_by(treatment_label) |&gt; \n  summarise(\n    `Mean Age (SD)` = paste0(round(mean(age), 1), \" (\", round(sd(age), 1), \")\"),\n    `N Female (%)` = paste0(sum(gender == \"Female\"), \" (\", round(sum(gender == \"Female\") / n() * 100, 1), \"%)\"),\n    `N Male (%)` = paste0(sum(gender == \"Male\"), \" (\", round(sum(gender == \"Male\") / n() * 100, 1), \"%)\"),\n    .groups = \"drop\"\n  ) |&gt;\n  # Transpose for easy review if needed\n  t() |&gt;\n  print()\n\n\n                [,1]                 [,2]                \ntreatment_label \"Treatment A (N=51)\" \"Treatment B (N=49)\"\nMean Age (SD)   \"50.3 (17.9)\"        \"45.7 (16.3)\"       \nN Female (%)    \"27 (52.9%)\"         \"28 (57.1%)\"        \nN Male (%)      \"24 (47.1%)\"         \"21 (42.9%)\"        \n\n\n\n\nExercise 2\nBuild a demografic table using {rtables} or {gtsummary}. Data is provided as follows:\n\n\nShow the code solution\n# Load Libraries & Data\nlibrary(dplyr)\n\nadsl &lt;- random.cdisc.data::cadsl\nadvs &lt;- random.cdisc.data::cadvs\n\n# Pre-Processing - Add any variables needed in your table to df\nadsl &lt;- adsl |&gt; \n  mutate(AGEGR1 = as.factor(case_when(\n    AGE &gt;= 17 & AGE &lt; 65 ~ \"≥17 to &lt;65\",\n    AGE &gt;= 65 ~ \"≥65\",\n    AGE &gt;= 65 & AGE &lt; 75 ~ \"≥65 to &lt;75\",\n    AGE &gt;= 75 ~ \"≥75\"\n  )))\n\nadvs &lt;- advs |&gt; \n  filter(AVISIT == \"BASELINE\", VSTESTCD == \"TEMP\") %&gt;%\n  select(\"USUBJID\", \"AVAL\")\n\nanl &lt;- left_join(adsl, advs, by = \"USUBJID\")\n\n\n\n\nShow the code solution\n  df &lt;- df %&gt;%\n    filter(.data[[saffl_var]] == \"Y\") %&gt;%\n    df_explicit_na()\n\n  alt_counts_df &lt;- alt_counts_df_preproc(alt_counts_df, id_var, arm_var, saffl_var)\n\n  lyt &lt;- basic_table_annot(show_colcounts, annotations) %&gt;%\n    split_cols_by_arm(arm_var, lbl_overall) %&gt;%\n    analyze_vars(\n      vars = vars,\n      var_labels = lbl_vars,\n      show_labels = \"visible\",\n      .stats = c(\"mean_sd\", \"median_range\", \"count_fraction\"),\n      .formats = NULL,\n      na.rm = na_rm\n    ) %&gt;%\n    append_topleft(\"Characteristic\")\n\n  tbl &lt;- build_table(lyt, df = df, alt_counts_df = alt_counts_df)\n  if (prune_0) tbl &lt;- prune_table(tbl)\n\n  tbl\n\n\n\n\nShow the code solution\ndf &lt;- df %&gt;% df_explicit_na()\n\ntbl &lt;- df %&gt;%\n  tbl_summary(\n    by = arm_var,\n    type = all_continuous() ~ \"continuous2\",\n    statistic = list(\n      all_continuous() ~ c(\n        \"{mean} ({sd})\",\n        \"{median} ({min} - {max})\"\n      ),\n      all_categorical() ~ \"{n} ({p}%)\"\n    ),\n    digits = all_continuous() ~ 1,\n    missing = ifelse(na_rm, \"no\", \"ifany\"),\n    label = as.list(lbl_vars) %&gt;% setNames(vars)\n  ) %&gt;%\n  gtsummary::bold_labels() %&gt;%\n  modify_header(all_stat_cols() ~ \"**{level}**  \\nN = {n}\") %&gt;%\n  add_overall(last = TRUE, col_label = paste0(\"**\", lbl_overall, \"**  \\nN = {n}\")) %&gt;%\n  gtsummary::add_stat_label(label = all_continuous2() ~ c(\"Mean (SD)\", \"Median (min - max)\")) %&gt;%\n  modify_footnote(update = everything() ~ NA) %&gt;%\n  gtsummary::modify_column_alignment(columns = all_stat_cols(), align = \"right\")\n\n\n\n\nExercise 3\nTLG-catalog\nADAE\n\n\nExercise 4\nteal and ADAE\ndemographic teal.gallery",
-    "crumbs": [
-      "Exercises"
-    ]
+    "text": "Click here to enter the feedback form."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "",
-    "text": "🗓 October 28, 2024 | 9:00am - 12:30pm EDT\n🏨 Virtual\n💥 FREE workshop registration",
-    "crumbs": [
-      "Home"
-    ]
+    "text": "🗓 October 28, 2024 | 9:00am - 12:30pm EDT\n🏨 Virtual\n💥 FREE workshop registration"
   },
   {
     "objectID": "index.html#learning-objectives",
     "href": "index.html#learning-objectives",
     "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "Learning objectives",
-    "text": "Learning objectives\nAfter a vision-filled motivational introduction, and through a succession of practical examples, this session will empower R developers, data scientists, and clinical researchers to adopt innovative, future-ready approaches.",
-    "crumbs": [
-      "Home"
-    ]
+    "text": "Learning objectives\nAfter a vision-filled motivational introduction, and through a succession of practical examples, this session will empower R developers, data scientists, and clinical researchers to adopt innovative, future-ready approaches."
   },
   {
     "objectID": "index.html#is-this-course-for-me",
     "href": "index.html#is-this-course-for-me",
     "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "Is this course for me?",
-    "text": "Is this course for me?\nEver wondered how clinical trials reporting may look in the future? Are you interested in learning about some of the latest tools and technologies transforming regulatory submissions? Do you want to explore the potential of R in clinical research? If you answered yes to any of these questions, this workshop is for you!\nThe workshop is not designed only for those who are masters in R. We will bring you along an intuitive path to produce reproducible (and interactive) reports.",
-    "crumbs": [
-      "Home"
-    ]
+    "text": "Is this course for me?\nEver wondered how clinical trials reporting may look in the future? Are you interested in learning about some of the latest tools and technologies transforming regulatory submissions? Do you want to explore the potential of R in clinical research? If you answered yes to any of these questions, this workshop is for you!\nThe workshop is not designed only for those who are masters in R. We will bring you along an intuitive path to produce reproducible (and interactive) reports."
   },
   {
     "objectID": "index.html#prework",
     "href": "index.html#prework",
     "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "Prework",
-    "text": "Prework\nBefore attending the workshop please check our posit cloud work space and create your own assignment. All packages needed are already installed there (it is a clone of the exercise folder).",
-    "crumbs": [
-      "Home"
-    ]
+    "text": "Prework\nBefore attending the workshop please check our posit cloud work space and create your own assignment. All packages needed are already installed there (it is a clone of the exercise folder)."
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License",
+    "section": "",
+    "text": "This material is based on the original work from the {gtreg} workshop by Shannon Pileggi and Daniel Sjoberg, available here, and adapted under a Creative Commons Attribution 4.0 International License."
   },
   {
     "objectID": "slides/index.html#licensing",
@@ -253,5 +222,12 @@
     "title": "The Near-Future of Regulatory Submissions: Embracing Reproducibility, Open Source, and Interactivity",
     "section": "Collaborate",
     "text": "Collaborate\nHow can I get involved?\n\n  \nNotice a 🐛 or an idea for enhancements💡?"
+  },
+  {
+    "objectID": "slidespage.html",
+    "href": "slidespage.html",
+    "title": "Slides",
+    "section": "",
+    "text": "View slides in full screen"
   }
 ]
