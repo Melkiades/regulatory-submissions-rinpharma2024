@@ -65,13 +65,26 @@ demographic_table <- data |>
   print()
 
 ```
+
+Bonus solution with {rtables}:
+
+```{r}
+#| eval: true
+#| echo: true
+library(rtables)
+library(tern)
+
+lyt <- basic_table() |> 
+  split_cols_by("treatment") |> 
+  analyze_vars(c("gender", "age"))
+
+build_table(lyt, data)
+```
+
 # Exercise 2
 
-Build a demografic table using {rtables} or {gtsummary}. Data is provided as follows:
+Build a demographic table using {rtables} or {gtsummary}. Data is provided as follows:
 ```{r}
-# Load Libraries & Data
-library(dplyr)
-
 adsl <- random.cdisc.data::cadsl
 advs <- random.cdisc.data::cadvs
 
@@ -85,42 +98,46 @@ adsl <- adsl |>
   )))
 
 advs <- advs |> 
-  filter(AVISIT == "BASELINE", VSTESTCD == "TEMP") %>%
+  filter(AVISIT == "BASELINE", VSTESTCD == "TEMP") |>
   select("USUBJID", "AVAL")
 
 anl <- left_join(adsl, advs, by = "USUBJID")
+
+df <- anl |>
+  df_explicit_na()
+
+vars <- c("SEX", "AGE", "AGEGR1", "RACE", "ETHNIC", "COUNTRY")
+lbl_vars <- formatters::var_labels(df, fill = TRUE)[vars]
+
+lyt <- basic_table(show_colcounts = TRUE) |>
+  split_cols_by("ARM", split_fun = add_overall_level("Total Population", first = FALSE)) |>
+  analyze_vars(
+    vars = vars,
+    var_labels = lbl_vars,
+    show_labels = "visible",
+    .stats = c("mean_sd", "median_range", "count_fraction"),
+    .formats = NULL,
+    na.rm = FALSE
+  ) |>
+  append_topleft("Characteristic")
+
+tbl <- build_table(lyt, df = df) |> 
+  prune_table()
+
+tbl
 ```
-```{r, eval=FALSE}
-  df <- df %>%
-    filter(.data[[saffl_var]] == "Y") %>%
-    df_explicit_na()
-
-  alt_counts_df <- alt_counts_df_preproc(alt_counts_df, id_var, arm_var, saffl_var)
-
-  lyt <- basic_table_annot(show_colcounts, annotations) %>%
-    split_cols_by_arm(arm_var, lbl_overall) %>%
-    analyze_vars(
-      vars = vars,
-      var_labels = lbl_vars,
-      show_labels = "visible",
-      .stats = c("mean_sd", "median_range", "count_fraction"),
-      .formats = NULL,
-      na.rm = na_rm
-    ) %>%
-    append_topleft("Characteristic")
-
-  tbl <- build_table(lyt, df = df, alt_counts_df = alt_counts_df)
-  if (prune_0) tbl <- prune_table(tbl)
-
-  tbl
-```
 
 ```{r, eval=FALSE}
-df <- df %>% df_explicit_na()
+library(gtsummary)
 
-tbl <- df %>%
+df <- df |> df_explicit_na()
+vars <- c("SEX", "AGE", "AGEGR1", "RACE", "ETHNIC", "COUNTRY")
+lbl_vars <- formatters::var_labels(df, fill = TRUE)[vars]
+
+tbl <- df  |> 
+  select(c(vars, "ARM")) |> 
   tbl_summary(
-    by = arm_var,
+    by = "ARM",
     type = all_continuous() ~ "continuous2",
     statistic = list(
       all_continuous() ~ c(
@@ -130,27 +147,77 @@ tbl <- df %>%
       all_categorical() ~ "{n} ({p}%)"
     ),
     digits = all_continuous() ~ 1,
-    missing = ifelse(na_rm, "no", "ifany"),
-    label = as.list(lbl_vars) %>% setNames(vars)
-  ) %>%
-  gtsummary::bold_labels() %>%
-  modify_header(all_stat_cols() ~ "**{level}**  \nN = {n}") %>%
-  add_overall(last = TRUE, col_label = paste0("**", lbl_overall, "**  \nN = {n}")) %>%
-  gtsummary::add_stat_label(label = all_continuous2() ~ c("Mean (SD)", "Median (min - max)")) %>%
-  modify_footnote(update = everything() ~ NA) %>%
+    missing = "ifany",
+    label = as.list(lbl_vars) |> setNames(vars)
+  ) |>
+  gtsummary::bold_labels() |>
+  modify_header(all_stat_cols() ~ "**{level}**  \nN = {n}") |>
+  add_overall(last = TRUE, col_label = paste0("**", "Total Population", "**  \nN = {n}")) |>
+  gtsummary::add_stat_label(label = all_continuous2() ~ c("Mean (SD)", "Median (min - max)")) |>
+  modify_footnote(update = everything() ~ NA) |>
   gtsummary::modify_column_alignment(columns = all_stat_cols(), align = "right")
 
+tbl
 ```
 
 # Exercise 3
 
-TLG-catalog
+Lets try now to build an ANCOVA efficacy table with a single visit and single endpoint.
 
-ADAE
+[AOVT02 on the TLG-catalog](https://insightsengineering.github.io/tlg-catalog/stable/tables/efficacy/aovt02.html){preview-link="true" style="text-align: center"}
+
+# Exercise 3 bonus
+
+Use {teal} part: [AOVT02 on the TLG-catalog](https://insightsengineering.github.io/tlg-catalog/stable/tables/efficacy/aovt02.html){preview-link="true" style="text-align: center"}
 
 
-# Exercise 4
+# Exercise 3 wild bonus
 
-teal and ADAE 
+Try to use the data from before (Exercise 1) to make your own teal app (tip: use `tm_t_summary`)
+```{r, eval=FALSE}
+library(teal.modules.clinical)
+## Data reproducible code
+data <- teal_data()
+data <- within(data, {
+  ADSL <- data.frame(
+    STUDYID = 1:100,
+    USUBJID = paste0("01-123-", 1:100),
+    age = formatters::with_label(sample(18:80, 100, replace = TRUE), "Age"),
+    gender = formatters::with_label(sample(c("Male", "Female"), 100, replace = TRUE), "Gender"),
+    treatment = factor(sample(c("Treatment A", "Treatment B"), 100, replace = TRUE))
+  )
+})
+datanames <- "ADSL"
+datanames(data) <- datanames
+join_keys(data) <- default_cdisc_join_keys[datanames]
 
-demographic teal.gallery
+## Setup App
+app <- init(
+  data = data,
+  modules = modules(
+    tm_t_summary(
+      label = "Demographic Table",
+      dataname = "ADSL",
+      arm_var = choices_selected(c("treatment"), "treatment"),
+      summarize_vars = choices_selected(
+        c("age", "gender"),
+        c("age", "gender")
+      ),
+      useNA = "ifany"
+    )
+  )
+)
+
+shinyApp(app$ui, app$server)
+
+```
+
+## Exercise 4 - Kaplan-Meier plot
+
+Lets try now to create an efficacy Kaplan-Meier plot.
+
+[KMG01](https://insightsengineering.github.io/tlg-catalog/stable/graphs/efficacy/kmg01.html)
+
+## Exercise 5 - Try {teal.gallery}
+
+[teal.gallery](https://insightsengineering.github.io/teal.gallery/)

@@ -33,10 +33,495 @@ Create a demographic table by using only {dplyr}.
 ```{r}
 #| echo: false
 #| cache: false
-countdown::countdown(minutes = 5, font_size = "1.5em")
+countdown::countdown(minutes = 10, font_size = "1.5em")
 ```
 
+## Exercise 1 - Solution
 
-<!-- ::: {style="text-align: center; margin-top: 1em"} -->
-<!-- [Matplotlib: Visualization with Python](https://matplotlib.org/){preview-link="true" style="text-align: center"} -->
-<!-- ::: -->
+::: panel-tabset
+### Code
+
+```{r}
+#| eval: false
+#| echo: true
+# Load necessary libraries
+library(dplyr)
+
+# Sample data frame with demographic data
+set.seed(123)
+data <- data.frame(
+  id = 1:100,
+  age = sample(18:80, 100, replace = TRUE),
+  gender = sample(c("Male", "Female"), 100, replace = TRUE),
+  treatment = sample(c("Treatment A", "Treatment B"), 100, replace = TRUE)
+)
+
+head(data)
+```
+
+### Output
+
+```{r}
+#| eval: true
+#| echo: false
+# Load necessary libraries
+library(dplyr)
+
+# Sample data frame with demographic data
+set.seed(123)
+data <- data.frame(
+  id = 1:100,
+  age = sample(18:80, 100, replace = TRUE),
+  gender = sample(c("Male", "Female"), 100, replace = TRUE),
+  treatment = sample(c("Treatment A", "Treatment B"), 100, replace = TRUE)
+)
+
+head(data) |> gt::gt()
+
+```
+
+:::
+## Exercise 1 - Solution
+
+::: panel-tabset
+### Code
+
+```{r}
+#| eval: false
+#| echo: true
+# Count participants per treatment group to get labels with counts
+treatment_counts <- data |> 
+  count(treatment) |> 
+  mutate(treatment_label = paste0(treatment, " (N=", n, ")"))
+
+# Create the demographic summary table
+demographic_table <- data |> 
+  # Join with treatment counts to include the labeled treatment names
+  left_join(treatment_counts, by = "treatment") |>
+  # Summarize age, female, and male counts and percentages by the labeled treatment
+  group_by(treatment_label) |> 
+  summarise(
+    `Mean Age (SD)` = paste0(round(mean(age), 1), " (", round(sd(age), 1), ")"),
+    `N Female (%)` = paste0(sum(gender == "Female"), " (", round(sum(gender == "Female") / n() * 100, 1), "%)"),
+    `N Male (%)` = paste0(sum(gender == "Male"), " (", round(sum(gender == "Male") / n() * 100, 1), "%)"),
+    .groups = "drop"
+  ) |>
+  # Transpose for easy review if needed
+  t() |>
+  print()
+```
+
+### Output
+
+```{r}
+#| eval: true
+#| echo: false
+
+# Count participants per treatment group to get labels with counts
+treatment_counts <- data |> 
+  count(treatment) |> 
+  mutate(treatment_label = paste0(treatment, " (N=", n, ")"))
+
+# Create the demographic summary table
+demographic_table <- data |> 
+  # Join with treatment counts to include the labeled treatment names
+  left_join(treatment_counts, by = "treatment") |>
+  # Summarize age, female, and male counts and percentages by the labeled treatment
+  group_by(treatment_label) |> 
+  summarise(
+    `Mean Age (SD)` = paste0(round(mean(age), 1), " (", round(sd(age), 1), ")"),
+    `N Female (%)` = paste0(sum(gender == "Female"), " (", round(sum(gender == "Female") / n() * 100, 1), "%)"),
+    `N Male (%)` = paste0(sum(gender == "Male"), " (", round(sum(gender == "Male") / n() * 100, 1), "%)"),
+    .groups = "drop"
+  ) |>
+  # Transpose for easy review if needed
+  t() 
+
+colnames(demographic_table) <- demographic_table[1, ]
+demographic_table <- demographic_table[-1, ]
+rn <- rownames(demographic_table)
+demographic_table <- as_data_frame(demographic_table) |> 
+  mutate(rowname = rn)
+rownames(demographic_table) <- NULL
+
+demographic_table |> 
+  gt::gt() |> 
+  print()
+```
+:::
+
+## Exercise 1 - Bonus Solution
+
+Here is how to do it in {rtables} (for tabulation) and {tern} (for the summary functions):
+
+```{r}
+#| eval: true
+#| echo: true
+library(rtables)
+library(tern)
+
+lyt <- basic_table() |> 
+  split_cols_by("treatment") |> 
+  analyze_vars(c("gender", "age"))
+
+build_table(lyt, data) |> 
+  as_html()
+```
+
+::: footer
+Check [{rtables} documentation](https://insightsengineering.github.io/rtables/latest-tag/)
+:::
+
+## Exercise 2
+
+Build the following demographic table using {rtables} or {gtsummary}.
+
+![](images/cardinal_table_02.png)
+
+::: footer
+From [FDA Standard Safety Tables and Figures: Integrated Guide](https://pharmaverse.github.io/cardinal/quarto/assets/resources/FDA-STF-IG-2022-N-1961-0002.pdf)
+:::
+
+## Some useful resources ;)
+
+:::: {.columns .v-center-container}
+::: {.column width="80%"}
+![](images/cardinal.png)
+:::
+
+::: {.column width="70%"}
+![](images/cardinal_involved.png)
+:::
+::::
+
+::: footer
+Check [cardinal](https://pharmaverse.github.io/cardinal/quarto/table-templates/template-table_02.html){preview-link="true" style="text-align: center"}
+:::
+
+## Exercise 2 - Data
+
+::: {.callout-tip}
+## Data Tip
+
+Checking {cardinal} template you can directly use the synthetic data set as described.
+:::
+
+. . .
+
+::: panel-tabset
+### Code
+
+```{r}
+#| eval: false
+#| echo: true
+adsl <- random.cdisc.data::cadsl
+advs <- random.cdisc.data::cadvs
+
+# Pre-Processing - Add any variables needed in your table to df
+adsl <- adsl |> 
+  mutate(AGEGR1 = as.factor(case_when(
+    AGE >= 17 & AGE < 65 ~ "≥17 to &lt;65",
+    AGE >= 65 ~ "≥65",
+    AGE >= 65 & AGE < 75 ~ "≥65 to &lt;75",
+    AGE >= 75 ~ "≥75"
+  )))
+
+advs <- advs |> 
+  filter(AVISIT == "BASELINE", VSTESTCD == "TEMP") |>
+  select("USUBJID", "AVAL")
+
+anl <- left_join(adsl, advs, by = "USUBJID")
+
+head(anl)
+```
+
+### Output
+
+```{r}
+#| eval: true
+#| echo: false
+adsl <- random.cdisc.data::cadsl
+advs <- random.cdisc.data::cadvs
+
+# Pre-Processing - Add any variables needed in your table to df
+adsl <- adsl |> 
+  mutate(AGEGR1 = as.factor(case_when(
+    AGE >= 17 & AGE < 65 ~ "≥17 to &lt;65",
+    AGE >= 65 ~ "≥65",
+    AGE >= 65 & AGE < 75 ~ "≥65 to &lt;75",
+    AGE >= 75 ~ "≥75"
+  )))
+
+advs <- advs |> 
+  filter(AVISIT == "BASELINE", VSTESTCD == "TEMP") |>
+  select("USUBJID", "AVAL")
+
+anl <- left_join(adsl, advs, by = "USUBJID")
+
+head(anl) |> gt::gt()
+```
+
+## Exercise 2 - Building the table
+
+::: {.callout-tip}
+## Tip
+
+Check the function `make_table_02` or `make_table_02_gtsum` from {cardinal} [here](https://github.com/pharmaverse/cardinal/blob/main/R/fda-table_02.R)
+:::
+
+```{r}
+#| echo: false
+#| cache: false
+countdown::countdown(minutes = 15, font_size = "1.5em")
+```
+
+## Exercise 2 - {rtables} solution
+
+::: panel-tabset
+### Code
+
+```{r}
+#| eval: false
+#| echo: true
+df <- anl |>
+  df_explicit_na()
+
+vars <- c("SEX", "AGE", "AGEGR1", "RACE", "ETHNIC", "COUNTRY")
+lbl_vars <- formatters::var_labels(df, fill = TRUE)[vars]
+
+lyt <- basic_table(show_colcounts = TRUE) |>
+  split_cols_by("ARM", split_fun = add_overall_level("Total Population", first = FALSE)) |>
+  analyze_vars(
+    vars = vars,
+    var_labels = lbl_vars,
+    show_labels = "visible",
+    .stats = c("mean_sd", "median_range", "count_fraction"),
+    .formats = NULL,
+    na.rm = FALSE
+  ) |>
+  append_topleft("Characteristic")
+
+tbl <- build_table(lyt, df = df) |> 
+  prune_table()
+
+tbl
+```
+
+### Output
+
+```{r}
+#| eval: true
+#| echo: false
+
+df <- anl |>
+  df_explicit_na()
+
+vars <- c("SEX", "AGE", "AGEGR1", "RACE", "ETHNIC", "COUNTRY")
+lbl_vars <- formatters::var_labels(df, fill = TRUE)[vars]
+
+lyt <- basic_table(show_colcounts = TRUE) |>
+  split_cols_by("ARM", split_fun = add_overall_level("Total Population", first = FALSE)) |>
+  analyze_vars(
+    vars = vars,
+    var_labels = lbl_vars,
+    show_labels = "visible",
+    .stats = c("mean_sd", "median_range", "count_fraction"),
+    .formats = NULL,
+    na.rm = FALSE
+  ) |>
+  append_topleft("Characteristic")
+
+tbl <- build_table(lyt, df = df) |> 
+  prune_table()
+
+tbl |> as_html()
+```
+:::
+
+## Exercise 2 - {gtsummary} solution
+
+::: panel-tabset
+### Code
+
+```{r}
+#| eval: false
+#| echo: true
+library(gtsummary)
+
+df <- df |> df_explicit_na()
+vars <- c("SEX", "AGE", "AGEGR1", "RACE", "ETHNIC", "COUNTRY")
+lbl_vars <- formatters::var_labels(df, fill = TRUE)[vars]
+
+tbl <- df  |> 
+  select(c(vars, "ARM")) |> 
+  tbl_summary(
+    by = "ARM",
+    type = all_continuous() ~ "continuous2",
+    statistic = list(
+      all_continuous() ~ c(
+        "{mean} ({sd})",
+        "{median} ({min} - {max})"
+      ),
+      all_categorical() ~ "{n} ({p}%)"
+    ),
+    digits = all_continuous() ~ 1,
+    missing = "ifany",
+    label = as.list(lbl_vars) |> setNames(vars)
+  ) |>
+  gtsummary::bold_labels() |>
+  modify_header(all_stat_cols() ~ "**{level}**  \nN = {n}") |>
+  add_overall(last = TRUE, col_label = paste0("**", "Total Population", "**  \nN = {n}")) |>
+  gtsummary::add_stat_label(label = all_continuous2() ~ c("Mean (SD)", "Median (min - max)")) |>
+  modify_footnote(update = everything() ~ NA) |>
+  gtsummary::modify_column_alignment(columns = all_stat_cols(), align = "right")
+
+tbl
+```
+
+### Output
+
+```{r}
+#| eval: true
+#| echo: false
+library(gtsummary)
+
+df <- df |> df_explicit_na()
+vars <- c("SEX", "AGE", "AGEGR1", "RACE", "ETHNIC", "COUNTRY")
+lbl_vars <- formatters::var_labels(df, fill = TRUE)[vars]
+
+tbl <- df  |> 
+  select(c(vars, "ARM")) |> 
+  tbl_summary(
+    by = "ARM",
+    type = all_continuous() ~ "continuous2",
+    statistic = list(
+      all_continuous() ~ c(
+        "{mean} ({sd})",
+        "{median} ({min} - {max})"
+      ),
+      all_categorical() ~ "{n} ({p}%)"
+    ),
+    digits = all_continuous() ~ 1,
+    missing = "ifany",
+    label = as.list(lbl_vars) |> setNames(vars)
+  ) |>
+  gtsummary::bold_labels() |>
+  modify_header(all_stat_cols() ~ "**{level}**  \nN = {n}") |>
+  add_overall(last = TRUE, col_label = paste0("**", "Total Population", "**  \nN = {n}")) |>
+  gtsummary::add_stat_label(label = all_continuous2() ~ c("Mean (SD)", "Median (min - max)")) |>
+  modify_footnote(update = everything() ~ NA) |>
+  gtsummary::modify_column_alignment(columns = all_stat_cols(), align = "right")
+
+tbl |> as_gt()
+```
+:::
+
+## Exercise 3 - TLG-catalog
+
+. . .
+
+<br>
+<br>
+
+Lets try now to build an ANCOVA efficacy table with a single visit and single endpoint.
+
+. . . 
+
+<br>
+
+::: {.callout-tip}
+## Tip
+
+::: {style="text-align: center; margin-top: 1em"}
+Peak at solution [AOVT02 on the TLG-catalog](https://insightsengineering.github.io/tlg-catalog/stable/tables/efficacy/aovt02.html){preview-link="true" style="text-align: center"} and try to understand each function!!
+:::
+:::
+
+```{r}
+#| echo: false
+#| cache: false
+countdown::countdown(minutes = 10, font_size = "1.5em")
+```
+
+::: footer
+Check [TLG-catalog](https://insightsengineering.github.io/tlg-catalog/stable) for hundreds of ready-made TLGs
+:::
+
+
+## Exercise 3 Bonus - {teal}
+
+. . .
+
+<br>
+<br>
+
+Lets try now to use the above table to build a {teal} interactive table!
+
+<br>
+
+. . . 
+
+::: {.callout-tip}
+## Tip
+
+::: {style="text-align: center; margin-top: 1em"}
+Peak at solution [AOVT02 for teal too!](https://insightsengineering.github.io/tlg-catalog/stable/tables/efficacy/aovt02.html){preview-link="true" style="text-align: center"} and try to understand each function!!
+:::
+:::
+
+```{r}
+#| echo: false
+#| cache: false
+countdown::countdown(minutes = 10, font_size = "1.5em")
+```
+
+::: footer
+Check [TLG-catalog](https://insightsengineering.github.io/tlg-catalog/stable) for hundreds of ready-made TLGs
+:::
+
+## Exercise 3 Bonus - {teal}
+
+<br>
+<br>
+
+Try to use the data from before (Exercise 1) to make your own teal app (tip: use `tm_t_summary`).
+
+
+## Exercise 4 - Kaplan-Meier plot
+
+. . .
+
+<br>
+<br>
+
+Lets try now to create an efficacy Kaplan-Meier plot.
+<br>
+
+. . . 
+
+::: {.callout-tip}
+## Tip
+
+::: {style="text-align: center; margin-top: 1em"}
+Peak at solution [KMG01](https://insightsengineering.github.io/tlg-catalog/stable/graphs/efficacy/kmg01.html){preview-link="true" style="text-align: center"} and try to understand each function!!
+:::
+:::
+
+```{r}
+#| echo: false
+#| cache: false
+countdown::countdown(minutes = 10, font_size = "1.5em")
+```
+
+::: footer
+Check [TLG-catalog](https://insightsengineering.github.io/tlg-catalog/stable) for hundreds of ready-made TLGs
+:::
+
+## Exercise 5 - Try {teal.gallery}
+::: {.callout-tip}
+## Play with efficacy app ;)
+
+::: {style="text-align: center; margin-top: 1em"}
+[teal.gallery](https://insightsengineering.github.io/teal.gallery/){preview-link="true" style="text-align: center"}
+:::
+:::
